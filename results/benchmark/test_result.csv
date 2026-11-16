@@ -1,0 +1,2 @@
+model,split,marine_debris_f1,marine_debris_iou,marine_debris_precision,marine_debris_recall,overall_accuracy,macro_f1_present_classes,evaluated_pixels
+spectral_plus_indices,test,0.6778711484593837,0.5127118644067796,0.5260869565217391,0.952755905511811,0.8220852599005455,0.5002080106371128,194863
