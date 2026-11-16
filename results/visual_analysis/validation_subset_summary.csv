@@ -1,0 +1,2 @@
+split,model,inspected_patches,annotated_pixels,tp,fp,fn,precision,recall,f1
+val,spectral_plus_indices,60,102285,109,156,18,0.41132075471698115,0.8582677165354331,0.556122448979592

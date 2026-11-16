@@ -1,0 +1,4 @@
+patch,status,hdf_rows_checked,tiff_annotated_finite_pixels,best_tiff_multiplier,spectral_match_rate,spectral_and_label_agreement,median_max_abs_band_difference,coordinate_check,coordinate_exact_matches,coordinate_label_agreement
+S2_11-6-18_16PCC_26.tif,PASS,200,8677,1.0,1.0,1.0,0.0,not_pixel_coordinates,0,
+S2_18-9-20_16PCC_39.tif,PASS,200,443,1.0,1.0,1.0,0.0,not_pixel_coordinates,0,
+S2_18-9-20_16PCC_29.tif,PASS,11,11,1.0,1.0,1.0,0.0,not_pixel_coordinates,0,

@@ -1,0 +1,175 @@
+patch,split,row,col,error,true_class,predicted_class,confidence
+S2_11-6-18_16PCC_26.tif,val,95,63,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,96,96,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,98,109,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,98,110,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,98,111,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,98,112,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,98,116,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,98,117,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,98,118,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,98,126,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,98,128,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,98,129,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,99,83,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,99,84,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,99,111,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,99,112,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,99,113,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,99,126,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,99,127,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,99,130,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,100,81,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,100,82,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,100,83,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,100,110,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,100,111,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,100,127,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,100,128,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,100,130,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,101,111,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,101,112,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,101,123,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,101,124,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,101,128,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,101,129,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,101,130,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,101,132,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,102,78,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,102,112,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,102,113,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,102,122,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,102,123,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,102,124,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,102,129,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,102,130,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,103,114,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,103,122,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,103,123,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,103,130,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,103,131,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,104,122,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,104,123,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,104,124,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,104,131,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,104,132,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,105,113,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,105,123,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,105,124,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,105,132,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,106,112,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,108,125,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,108,132,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,108,133,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,109,126,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,109,131,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,109,133,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,110,111,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,110,112,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,110,131,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,110,132,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,110,135,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,111,112,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,111,113,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,111,125,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,111,128,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,111,129,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,111,132,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,111,133,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,111,134,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,111,135,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,112,125,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,112,126,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,112,129,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,112,132,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,112,133,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,113,130,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,113,132,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,113,133,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,114,130,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,114,131,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,114,132,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,115,120,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,115,128,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,115,130,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,115,131,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,115,132,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,115,133,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,116,121,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,116,128,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,116,131,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,116,132,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,117,129,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,117,131,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,117,132,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,118,130,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,119,130,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,119,131,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,121,133,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,121,134,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,127,124,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,129,127,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,130,128,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_26.tif,val,131,112,FP,Sediment-Laden Water,Marine Debris,1
+S2_11-6-18_16PCC_30.tif,val,226,6,FN,Marine Debris,Natural Organic Material,2
+S2_12-1-17_16PEC_10.tif,val,137,19,FP,Ship,Marine Debris,1
+S2_18-1-18_48PZC_14.tif,val,156,255,FN,Marine Debris,Ship,3
+S2_18-1-18_48PZC_17.tif,val,203,91,FN,Marine Debris,Ship,2
+S2_18-1-18_48PZC_22.tif,val,43,76,FP,Ship,Marine Debris,2
+S2_18-1-18_48PZC_22.tif,val,52,233,FP,Ship,Marine Debris,1
+S2_18-1-18_48PZC_25.tif,val,121,222,FP,Clouds,Marine Debris,1
+S2_18-1-18_48PZC_25.tif,val,121,223,FP,Clouds,Marine Debris,1
+S2_18-1-18_48PZC_25.tif,val,133,79,FP,Cloud Shadows,Marine Debris,1
+S2_18-1-18_48PZC_25.tif,val,133,81,FP,Cloud Shadows,Marine Debris,1
+S2_18-1-18_48PZC_25.tif,val,134,80,FP,Cloud Shadows,Marine Debris,1
+S2_18-1-18_48PZC_25.tif,val,134,81,FP,Cloud Shadows,Marine Debris,1
+S2_18-9-20_16PCC_14.tif,val,212,134,FP,Wakes,Marine Debris,1
+S2_18-9-20_16PCC_14.tif,val,213,131,FP,Ship,Marine Debris,1
+S2_18-9-20_16PCC_25.tif,val,103,22,FP,Ship,Marine Debris,1
+S2_18-9-20_16PCC_25.tif,val,104,22,FP,Ship,Marine Debris,1
+S2_18-9-20_16PCC_29.tif,val,55,5,FP,Natural Organic Material,Marine Debris,2
+S2_18-9-20_16PCC_29.tif,val,132,24,FP,Natural Organic Material,Marine Debris,2
+S2_18-9-20_16PCC_29.tif,val,132,25,FP,Natural Organic Material,Marine Debris,2
+S2_18-9-20_16PCC_29.tif,val,132,23,FN,Marine Debris,Clouds,1
+S2_18-9-20_16PCC_29.tif,val,132,26,FN,Marine Debris,Clouds,1
+S2_18-9-20_16PCC_39.tif,val,181,53,FN,Marine Debris,Clouds,3
+S2_18-9-20_16PCC_39.tif,val,185,31,FN,Marine Debris,Waves,1
+S2_18-9-20_16PCC_39.tif,val,186,28,FN,Marine Debris,Clouds,1
+S2_18-9-20_16PCC_39.tif,val,186,35,FN,Marine Debris,Clouds,1
+S2_18-9-20_16PCC_39.tif,val,186,36,FN,Marine Debris,Clouds,1
+S2_18-9-20_16PCC_39.tif,val,187,24,FN,Marine Debris,Clouds,2
+S2_18-9-20_16PCC_39.tif,val,187,25,FN,Marine Debris,Clouds,2
+S2_18-9-20_16PCC_39.tif,val,187,26,FN,Marine Debris,Clouds,2
+S2_18-9-20_16PCC_39.tif,val,189,30,FN,Marine Debris,Clouds,2
+S2_18-9-20_16PCC_39.tif,val,191,26,FN,Marine Debris,Clouds,2
+S2_18-9-20_16PCC_39.tif,val,196,18,FN,Marine Debris,Waves,1
+S2_18-9-20_16PCC_39.tif,val,205,1,FN,Marine Debris,Waves,2
+S2_18-9-20_16PCC_39.tif,val,206,0,FN,Marine Debris,Clouds,2
+S2_18-9-20_16PCC_64.tif,val,193,45,FP,Ship,Marine Debris,1
+S2_18-9-20_16PCC_64.tif,val,193,46,FP,Ship,Marine Debris,1
+S2_18-9-20_16PCC_64.tif,val,194,46,FP,Ship,Marine Debris,1
+S2_18-9-20_16PCC_64.tif,val,195,46,FP,Ship,Marine Debris,1
+S2_18-9-20_16PCC_67.tif,val,253,20,FP,Ship,Marine Debris,1
+S2_18-9-20_16PCC_67.tif,val,253,21,FP,Ship,Marine Debris,1
+S2_18-9-20_16PCC_67.tif,val,253,22,FP,Ship,Marine Debris,1
+S2_18-9-20_16PCC_69.tif,val,227,174,FP,Ship,Marine Debris,1
+S2_18-9-20_16PCC_69.tif,val,228,172,FP,Ship,Marine Debris,1
+S2_18-9-20_16PCC_69.tif,val,228,174,FP,Ship,Marine Debris,1
+S2_19-9-18_16PCC_15.tif,val,217,197,FP,Natural Organic Material,Marine Debris,2
+S2_19-9-18_16PCC_15.tif,val,254,96,FP,Natural Organic Material,Marine Debris,2
+S2_19-9-18_16PCC_15.tif,val,255,96,FP,Natural Organic Material,Marine Debris,2
+S2_19-9-18_16PCC_18.tif,val,143,211,FP,Sparse Sargassum,Marine Debris,2
+S2_19-9-18_16PCC_23.tif,val,126,254,FP,Foam,Marine Debris,1
+S2_21-2-18_16PCC_5.tif,val,126,147,FP,Ship,Marine Debris,1
+S2_21-2-18_16PCC_5.tif,val,129,150,FP,Wakes,Marine Debris,1
+S2_21-2-18_16PCC_5.tif,val,130,147,FP,Wakes,Marine Debris,1
+S2_28-9-20_16PDC_1.tif,val,57,250,FP,Foam,Marine Debris,3
+S2_28-9-20_16PDC_1.tif,val,94,241,FP,Foam,Marine Debris,3
+S2_28-9-20_16PDC_17.tif,val,187,239,FP,Sparse Sargassum,Marine Debris,1
+S2_28-9-20_16PDC_29.tif,val,217,151,FP,Marine Water,Marine Debris,1
+S2_29-12-20_18QYF_12.tif,val,29,187,FP,Clouds,Marine Debris,1
+S2_29-12-20_18QYF_12.tif,val,29,189,FP,Clouds,Marine Debris,1
+S2_29-12-20_18QYF_12.tif,val,112,21,FP,Clouds,Marine Debris,1
+S2_29-12-20_18QYF_12.tif,val,113,21,FP,Clouds,Marine Debris,1
+S2_7-3-20_18QYG_8.tif,val,23,41,FP,Natural Organic Material,Marine Debris,3
+S2_7-3-20_18QYG_8.tif,val,134,131,FP,Natural Organic Material,Marine Debris,2
