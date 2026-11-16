@@ -1,0 +1,7 @@
+experiment,patch,split,annotated_pixels,tp,fp,fn,sediment_laden_water_fp,precision,recall,f1
+full_19,S2_11-6-18_16PCC_26.tif,val,8677,0,112,0,112,0.0,0.0,0.0
+minus_ndmi,S2_11-6-18_16PCC_26.tif,val,8677,0,115,0,115,0.0,0.0,0.0
+minus_ndwi,S2_11-6-18_16PCC_26.tif,val,8677,0,69,0,69,0.0,0.0,0.0
+minus_fdi,S2_11-6-18_16PCC_26.tif,val,8677,0,142,0,142,0.0,0.0,0.0
+minus_three,S2_11-6-18_16PCC_26.tif,val,8677,0,65,0,65,0.0,0.0,0.0
+bands_only,S2_11-6-18_16PCC_26.tif,val,8677,0,99,0,99,0.0,0.0,0.0

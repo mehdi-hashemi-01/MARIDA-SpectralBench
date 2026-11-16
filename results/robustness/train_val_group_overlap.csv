@@ -1,0 +1,4 @@
+grouping,train_distinct_groups,validation_distinct_groups,shared_train_validation_groups,fraction_validation_groups_shared
+patch,694,328,0,0.0
+scene_date_tile,36,12,0,0.0
+tile,13,7,5,0.7142857142857143

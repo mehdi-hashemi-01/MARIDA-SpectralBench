@@ -1,0 +1,16 @@
+,Marine Debris,Dense Sargassum,Sparse Sargassum,Natural Organic Material,Ship,Clouds,Marine Water,Sediment-Laden Water,Foam,Turbid Water,Shallow Water,Waves,Cloud Shadows,Wakes,Mixed Water
+Marine Debris,959,0,4,12,64,17,0,0,0,0,0,5,0,14,0
+Dense Sargassum,0,1013,149,5,0,0,0,0,0,0,0,0,0,0,0
+Sparse Sargassum,23,7,319,14,0,0,0,0,0,0,0,5,0,4,13
+Natural Organic Material,55,0,0,33,0,1,0,0,0,0,0,3,0,0,0
+Ship,101,0,8,30,1014,14,3,1,44,2,24,31,0,56,12
+Clouds,19,0,0,0,1711,12615,932,0,1,50,166,1551,154,2042,21
+Marine Water,1,0,583,0,2,308,7014,0,0,271,671,2764,6308,878,39
+Sediment-Laden Water,99,448,0,0,2500,0,0,122505,13,0,0,0,0,0,0
+Foam,12,0,0,0,163,0,0,3,178,1,0,4,0,8,0
+Turbid Water,1,0,14,0,40,0,168,25,502,33285,3554,31,5,939,2
+Shallow Water,0,0,0,0,0,0,66,0,2,203,545,32,2,161,0
+Waves,11,0,0,0,97,117,48,0,0,0,3,304,94,313,0
+Cloud Shadows,2,0,0,0,0,39,910,0,0,14,83,256,1066,33,1
+Wakes,67,0,6,0,34,51,647,0,13,86,86,230,71,646,9
+Mixed Water,6,0,20,4,1,0,13,0,0,0,0,7,5,16,22

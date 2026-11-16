@@ -1,0 +1,85 @@
+experiment,true_class,predicted_class,false_positive_pixels
+full_19,Dense Sargassum,Marine Debris,0
+full_19,Sparse Sargassum,Marine Debris,15
+full_19,Natural Organic Material,Marine Debris,54
+full_19,Ship,Marine Debris,66
+full_19,Clouds,Marine Debris,18
+full_19,Marine Water,Marine Debris,1
+full_19,Sediment-Laden Water,Marine Debris,112
+full_19,Foam,Marine Debris,3
+full_19,Turbid Water,Marine Debris,3
+full_19,Shallow Water,Marine Debris,0
+full_19,Waves,Marine Debris,12
+full_19,Cloud Shadows,Marine Debris,4
+full_19,Wakes,Marine Debris,21
+full_19,Mixed Water,Marine Debris,4
+minus_ndmi,Dense Sargassum,Marine Debris,0
+minus_ndmi,Sparse Sargassum,Marine Debris,10
+minus_ndmi,Natural Organic Material,Marine Debris,55
+minus_ndmi,Ship,Marine Debris,78
+minus_ndmi,Clouds,Marine Debris,27
+minus_ndmi,Marine Water,Marine Debris,3
+minus_ndmi,Sediment-Laden Water,Marine Debris,115
+minus_ndmi,Foam,Marine Debris,2
+minus_ndmi,Turbid Water,Marine Debris,0
+minus_ndmi,Shallow Water,Marine Debris,0
+minus_ndmi,Waves,Marine Debris,38
+minus_ndmi,Cloud Shadows,Marine Debris,5
+minus_ndmi,Wakes,Marine Debris,22
+minus_ndmi,Mixed Water,Marine Debris,3
+minus_ndwi,Dense Sargassum,Marine Debris,0
+minus_ndwi,Sparse Sargassum,Marine Debris,14
+minus_ndwi,Natural Organic Material,Marine Debris,53
+minus_ndwi,Ship,Marine Debris,94
+minus_ndwi,Clouds,Marine Debris,12
+minus_ndwi,Marine Water,Marine Debris,2
+minus_ndwi,Sediment-Laden Water,Marine Debris,69
+minus_ndwi,Foam,Marine Debris,7
+minus_ndwi,Turbid Water,Marine Debris,0
+minus_ndwi,Shallow Water,Marine Debris,0
+minus_ndwi,Waves,Marine Debris,14
+minus_ndwi,Cloud Shadows,Marine Debris,1
+minus_ndwi,Wakes,Marine Debris,46
+minus_ndwi,Mixed Water,Marine Debris,4
+minus_fdi,Dense Sargassum,Marine Debris,0
+minus_fdi,Sparse Sargassum,Marine Debris,18
+minus_fdi,Natural Organic Material,Marine Debris,55
+minus_fdi,Ship,Marine Debris,74
+minus_fdi,Clouds,Marine Debris,18
+minus_fdi,Marine Water,Marine Debris,2
+minus_fdi,Sediment-Laden Water,Marine Debris,142
+minus_fdi,Foam,Marine Debris,2
+minus_fdi,Turbid Water,Marine Debris,1
+minus_fdi,Shallow Water,Marine Debris,0
+minus_fdi,Waves,Marine Debris,13
+minus_fdi,Cloud Shadows,Marine Debris,5
+minus_fdi,Wakes,Marine Debris,21
+minus_fdi,Mixed Water,Marine Debris,5
+minus_three,Dense Sargassum,Marine Debris,0
+minus_three,Sparse Sargassum,Marine Debris,9
+minus_three,Natural Organic Material,Marine Debris,52
+minus_three,Ship,Marine Debris,95
+minus_three,Clouds,Marine Debris,29
+minus_three,Marine Water,Marine Debris,5
+minus_three,Sediment-Laden Water,Marine Debris,65
+minus_three,Foam,Marine Debris,7
+minus_three,Turbid Water,Marine Debris,0
+minus_three,Shallow Water,Marine Debris,0
+minus_three,Waves,Marine Debris,55
+minus_three,Cloud Shadows,Marine Debris,6
+minus_three,Wakes,Marine Debris,52
+minus_three,Mixed Water,Marine Debris,5
+bands_only,Dense Sargassum,Marine Debris,0
+bands_only,Sparse Sargassum,Marine Debris,23
+bands_only,Natural Organic Material,Marine Debris,55
+bands_only,Ship,Marine Debris,101
+bands_only,Clouds,Marine Debris,19
+bands_only,Marine Water,Marine Debris,1
+bands_only,Sediment-Laden Water,Marine Debris,99
+bands_only,Foam,Marine Debris,12
+bands_only,Turbid Water,Marine Debris,1
+bands_only,Shallow Water,Marine Debris,0
+bands_only,Waves,Marine Debris,11
+bands_only,Cloud Shadows,Marine Debris,2
+bands_only,Wakes,Marine Debris,67
+bands_only,Mixed Water,Marine Debris,6

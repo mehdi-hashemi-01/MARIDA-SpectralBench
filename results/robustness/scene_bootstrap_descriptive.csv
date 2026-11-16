@@ -1,0 +1,4 @@
+statistic,actual_full_validation_value,bootstrap_mean,bootstrap_2_5_percentile,bootstrap_97_5_percentile,valid_replicates,bootstrap_repeats,groups_resampled,grouping,seed,interpretation
+full_19,0.8187234042553192,0.8108177377351611,0.6444728083797692,0.9188616635003022,1000,1000,12,Date+Tile,42,descriptive within-validation group resampling; not out-of-scene generalization
+minus_ndwi,0.8116189662537378,0.8057718771390924,0.6597640228356058,0.9206939322776703,1000,1000,12,Date+Tile,42,descriptive within-validation group resampling; not out-of-scene generalization
+delta_minus_ndwi_minus_full,-0.007104438001581448,-0.005045860596068888,-0.03723656291443167,0.037953366883906166,1000,1000,12,Date+Tile,42,descriptive within-validation group resampling; not out-of-scene generalization
