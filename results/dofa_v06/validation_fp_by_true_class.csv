@@ -1,0 +1,15 @@
+true_class,labeled_support,false_positive_as_debris
+Ship,1340,88
+Sparse Sargassum,385,68
+Mixed Water,94,59
+Natural Organic Material,92,51
+Waves,987,51
+Dense Sargassum,1167,43
+Marine Water,18839,40
+Turbid Water,38566,16
+Foam,369,15
+Wakes,1946,7
+Clouds,19262,0
+Sediment-Laden Water,125565,0
+Shallow Water,1011,0
+Cloud Shadows,2404,0

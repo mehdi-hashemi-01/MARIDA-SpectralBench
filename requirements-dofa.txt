@@ -1,0 +1,5 @@
+# Additional dependencies for v0.6 only (v0.4/v0.5 packages remain in place).
+# DOFA's official torch.hub repo specifically documents timm 0.9.2.
+# DO NOT reinstall torch if CUDA works on your RTX 5070 Laptop GPU.
+timm==0.9.2
+huggingface_hub>=0.26

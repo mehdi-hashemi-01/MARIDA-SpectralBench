@@ -1,0 +1,2 @@
+# Append this to the existing root .gitignore; do not overwrite your .gitignore.
+baseline/cache/

@@ -1,0 +1,4 @@
+model,split,marine_debris_f1,marine_debris_precision,marine_debris_recall,marine_debris_iou,evaluated_pixels,provenance
+Archived RF: spectral_plus_indices,val,0.815722738799662,0.7474825716498839,0.8976744186046511,0.6887937187723054,213102,v0.1 archived; separate historical training
+Archived RF: spectral_only,val,0.7957078002476269,0.7151335311572701,0.8967441860465116,0.660726525017135,213102,v0.1 archived; separate historical training
+DOFA frozen + dense decoder (v0.6),val,0.7813129279097866,0.6889204545454546,0.9023255813953488,0.6411103767349636,213102,new pretrained DOFA experiment; frozen encoder

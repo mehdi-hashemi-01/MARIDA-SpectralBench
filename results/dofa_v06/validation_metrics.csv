@@ -1,0 +1,2 @@
+experiment,split,marine_debris_f1,marine_debris_iou,marine_debris_precision,marine_debris_recall,tp,fp,fn,evaluated_pixels,best_epoch,pretrained_checkpoint_sha256,clouds_as_debris_fp,waves_as_debris_fp
+DOFA ViT-B frozen encoder + spectral skip decoder,val,0.7813129279097866,0.6411103767349636,0.6889204545454546,0.9023255813953488,970,438,105,213102,10,4720985e42b918ac0307009eb06121a3435d9bbce6fd95446f84824a538165b1,0,51

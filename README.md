@@ -2,17 +2,17 @@
 
 # MARIDA-SpectralBench
 
-**From Spectral Random Forest Baselines to Multispectral U-Net Segmentation**
+**From Spectral Random Forest Baselines to Multispectral U-Net and Pretrained DOFA Transfer**
 
-*A reproducible, failure-driven investigation of marine debris detection in Sentinel-2 imagery using MARIDA.*
+*A reproducible, failure-driven study of multispectral marine debris detection using classical machine learning, deep segmentation and remote-sensing pretraining.*
 
 [![Python](https://img.shields.io/badge/Python-3.11-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-CUDA_Enabled-EE4C2C?logo=pytorch&logoColor=white)](https://pytorch.org/)
 [![Dataset](https://img.shields.io/badge/Dataset-MARIDA-1B7189)](https://zenodo.org/records/5151941)
 [![License](https://img.shields.io/badge/License-MIT-177245)](LICENSE)
-[![Stage](https://img.shields.io/badge/Research_Stage-v0.5_UNet_Ablations-475569)](#controlled-u-net-training-ablations-v05)
+[![Stage](https://img.shields.io/badge/Research_Stage-v0.6_DOFA_Transfer-475569)](#pretrained-dofa-frozen-feature-transfer-v06)
 
-[Overview](#overview) · [RF Baseline](#benchmark-results) · [Feature Ablation](#feature-ablation-v03) · [Robustness](#multi-seed-robustness-and-scene-analysis-v031) · [Geographic Holdout](#geographic-holdout-v032) · [U-Net](#multispectral-u-net-segmentation-v04) · [U-Net Ablations](#controlled-u-net-training-ablations-v05) · [Reproduce](#reproduction)
+[Overview](#overview) · [RF Baseline](#benchmark-results) · [Feature Ablation](#feature-ablation-v03) · [Robustness](#multi-seed-robustness-and-scene-analysis-v031) · [Geographic Holdout](#geographic-holdout-v032) · [U-Net](#multispectral-u-net-segmentation-v04) · [U-Net Ablations](#controlled-u-net-training-ablations-v05) · [DOFA Transfer](#pretrained-dofa-frozen-feature-transfer-v06) · [Reproduce](#reproduction)
 
 <img src="assets/figures/pipeline.png" width="100%" alt="Classical MARIDA baseline workflow">
 
@@ -20,14 +20,15 @@
 
 ## Overview
 
-Marine debris in Sentinel-2 observations can be confused with sediment-laden water, ships, wakes, waves, clouds, foam, and natural floating material. This repository follows those **measured failure modes** from a pixel-level **Random Forest (RF)** baseline to an **11-band, 15-class U-Net**, with a focus on transparent protocols, reproducible experiment outputs, and honest evaluation limits.
+Marine debris in Sentinel-2 observations can be confused with sediment-laden water, ships, wakes, waves, clouds, foam, and natural floating material. This repository follows those **measured failure modes** from pixel-level **Random Forest (RF)** baselines to an **11-band, 15-class U-Net** and a **pretrained DOFA ViT-Base encoder with a trainable segmentation decoder**. The emphasis is on transparent protocols, reproducible artifacts, and explicit evaluation boundaries.
 
-The project asks four linked questions:
+The project asks five linked questions:
 
 1. Do engineered spectral indices improve pixel-level debris detection over the 11 Sentinel-2 bands alone?
 2. Are those improvements stable across training seeds, scene conditions, and held-out geographic Tile IDs?
 3. Can a spatial segmentation model use neighboring pixels to reduce difficult false alarms?
 4. Which training choices help or harm a multispectral U-Net on the official validation split?
+5. Can frozen features from a wavelength-aware pretrained remote-sensing encoder improve pixel-level marine debris detection?
 
 ### Completed research stages
 
@@ -39,9 +40,10 @@ The project asks four linked questions:
 | v0.3.1 | Five-seed robustness and scene analysis | Completed | Are feature effects and errors stable across seeds/scenes? |
 | v0.3.2 | Leave-one-Tile-out RF evaluation | Completed | How does RF behave on held-out geographic Tile IDs? |
 | v0.4 | 11-band, 15-class U-Net | Completed | Does learned spatial context improve marine debris detection? |
-| **v0.5** | **Controlled U-Net training ablations** | **Completed on validation** | **Do loss weights, patch sampling, or spectral jitter improve U-Net?** |
+| v0.5 | Controlled U-Net training ablations | Completed on validation | Do loss weights, patch sampling, or spectral jitter improve U-Net? |
+| **v0.6** | **Pretrained DOFA ViT-B frozen-feature transfer** | **Completed on validation** | **Does a frozen remote-sensing encoder with a trainable segmentation decoder improve detection?** |
 
-**Scope:** RF uses individual labeled pixels and their spectral features. U-Net consumes entire 11-band image patches and predicts a 15-class mask; **metrics for both are computed only on annotated pixels**. MARIDA mask value `0` means *unlabeled*, not clean water. The engineered spectral indices derive from the same 11 bands and are **not an additional modality**.
+**Scope:** RF uses individual labeled pixels; U-Net learns spatial features from entire patches; DOFA v0.6 supplies **frozen pretrained spatial tokens to a trainable decoder that also receives the 11 raw spectral bands**. All three methods produce 15-class pixel predictions, and **metrics are computed only on annotated pixels**. MARIDA mask value `0` means *unlabeled*, not clean water. The engineered spectral indices derive from the same 11 bands and are **not an additional modality**.
 
 ### Key results — read with their evaluation protocols
 
@@ -57,9 +59,10 @@ The project asks four linked questions:
 | v0.3.2 — RF, without NDWI | Same grouped evaluation | **0.3504** | 0.2217 | 0.8363 | Strongly influenced by one Tile |
 | v0.4 — U-Net, 11 bands | Official validation | 0.8009 | 0.7577 | 0.8493 | Best checkpoint: epoch 33 |
 | v0.4 — U-Net, 11 bands | **Official test** | **0.3851** | 0.2510 | 0.8268 | Worse debris F1 than archived RF |
-| **v0.5 — U-Net `v04_replay`** | **Official validation only** | **0.8286** | **0.8123** | 0.8456 | Best F1 among four v0.5 runs; no v0.5 test score |
+| v0.5 — U-Net `v04_replay` | Official validation only | **0.8286** | **0.8123** | 0.8456 | Best F1 among four v0.5 runs; no v0.5 test score |
+| **v0.6 — DOFA ViT-B + segmentation decoder** | **Official validation only** | **0.7813** | 0.6889 | **0.9023** | Frozen pretrained encoder + raw-spectral skip; best epoch 10; no v0.6 test score |
 
-**Do not interpret these as one common leaderboard.** The v0.2 subset, the grouped Train-only experiment, the official validation/test splits, the v0.1 RF, and separately trained U-Nets have different evaluation populations or training protocols. The official Test has been inspected in earlier stages; no further architecture/feature choices should be made *using* those test results. The v0.5 checkpoints were selected using validation, **not re-evaluated on Test**.
+**Do not interpret these as one common leaderboard.** The v0.2 subset, the grouped Train-only experiment, the official validation/test splits, the v0.1 RF, and separately trained U-Nets have different evaluation populations or training protocols. The official Test has been inspected in earlier stages; no further architecture/feature choices should be made *using* those test results. The v0.5 and v0.6 checkpoints were selected using **official Validation** and **not evaluated on Test**. The v0.6 number measures a frozen-encoder-plus-decoder system; it does not isolate the effect of pretraining.
 
 ## Benchmark Results
 
@@ -159,7 +162,7 @@ False-positive debris predictions cluster in a localized sediment-laden region. 
 <img src="assets/figures/visual_errors/S2_18-9-20_16PCC_39_visual_errors.png" width="100%" alt="Spatially localized false-negative predictions on a validation marine-debris patch">
 </p>
 
-Of the 13 missed debris pixels, **10 were predicted as Clouds** and **3 as Waves**. This image motivates testing whether spatial context helps a classifier distinguish debris from nearby surface phenomena; improved performance from a spatial model has **not yet been demonstrated**.
+Of the 13 missed debris pixels, **10 were predicted as Clouds** and **3 as Waves**. This image motivates testing whether spatial context helps distinguish debris from nearby surface phenomena; an isolated case study cannot establish an overall advantage of spatial models.
 
 <details>
 <summary><b>Additional validation cases</b></summary>
@@ -463,6 +466,132 @@ The best v0.5 U-Net has **0.8286 validation F1**, **1.29 percentage points highe
 
 **Current research decision:** retain `v04_replay` as the best *validation-F1* v0.5 checkpoint. The `no_debris_oversampling` alternative trades lower recall for fewer alarms. Neither is established as better than RF on independent scenes or new geography. See [v0.5 experiment protocol](docs/unet_v05_controlled_ablation.md) and `results/unet_v05/`.
 
+## Pretrained DOFA Frozen-Feature Transfer (v0.6)
+
+To test a remote-sensing foundation-model approach, we implemented a **wavelength-conditioned DOFA ViT-Base encoder** with its real, pretrained weights, followed by a trainable **15-class segmentation decoder**. Unlike the earlier U-Net, DOFA is pretrained on remote-sensing imagery. In this first experiment, however, the **encoder is frozen**; no DOFA transformer weights are fine-tuned.
+
+### Architecture and verified pretrained checkpoint
+
+The 11 MARIDA spectral bands are supplied in their original order, along with their central wavelengths in micrometres. DOFA extracts spatial representations from each **11 × 256 × 256** patch. Its cached spatial tokens form a **16 × 16** grid; a decoder upsamples these representations to a **15 × 256 × 256** prediction. The decoder also has a **raw-spectral skip connection**, so its performance cannot be attributed entirely to pretrained features.
+
+The `20_prepare_dofa.py` execution log confirms that the official pretrained checkpoint was loaded successfully:
+
+| Verification item | Recorded outcome |
+|:--|:--|
+| Encoder | DOFA ViT-Base (`DOFA_ViT_base_e100.pth`) |
+| Pretrained tensor coverage | **100.00%** |
+| Checkpoint SHA256 | `4720985e42b918ac0307009eb06121a3435d9bbce6fd95446f84824a538165b1` |
+| Extracted frozen feature maps | **694 Train + 328 Validation patches** |
+| Evaluation split used for model selection | **Validation only** |
+| Official Test access for v0.6 | **None** |
+| Local feature cache | `baseline/cache/dofa_v06/` (not tracked by Git) |
+
+This verified checkpoint load is distinct from merely downloading the DOFA source code: it confirms that the intended pretrained tensors were matched to the encoder. The encoder was evaluated on the **NVIDIA RTX 5070 Laptop GPU** in the recorded execution.
+
+### Training and validation protocol
+
+- **Data:** 694 official Train patches, 328 official Validation patches, **213,102 evaluated labeled Validation pixels**; unlabeled value `0` is ignored in supervised loss and scoring.
+- **Optimization:** decoder-only fitting, seed **42**, AdamW learning rate **3e-4**, batch size **4**, maximum **30** epochs, patience **8**; training stopped after **18** recorded epochs.
+- **Sampling/loss:** debris-positive patch oversampling, class-weighted and annotation-confidence-weighted masked cross-entropy.
+- **Preprocessing:** band normalization statistics computed only from Train; this is a project adaptation and **is not asserted to match DOFA's original pretraining normalization**.
+- **Selection:** checkpoint chosen by pooled **Marine Debris F1 on Validation** (best at **epoch 10**). No model selection or tuning is performed using the official Test.
+
+### DOFA v0.6 validation results
+
+| Metric | DOFA v0.6 (frozen encoder + spectral-skip decoder) |
+|:--|--:|
+| **Marine Debris F1** | **0.7813** |
+| Precision | 0.6889 |
+| Recall | **0.9023** |
+| IoU | 0.6411 |
+| True positives | **970** |
+| False positives | **438** |
+| False negatives | **105** |
+| Evaluated labeled pixels | **213,102** |
+| Best checkpoint epoch | **10** |
+
+The recorded TP, FP, and FN agree with the full 15-class validation confusion matrix and the per-patch output tables. The model correctly detects **970 of 1,075** annotated Marine Debris pixels while also marking **438** other labeled pixels as Marine Debris.
+
+### Comparison against earlier baselines on official Validation
+
+| Model | Input / training strategy | Debris F1 ↑ | Precision ↑ | Recall ↑ | IoU ↑ |
+|:--|:--|--:|--:|--:|--:|
+| **U-Net v0.5 `v04_replay`** | 11 bands; trained spatial network | **0.8286** | **0.8123** | 0.8456 | **0.7074** |
+| RF v0.1 (19 features) | 11 bands + 8 indices; classical RF | 0.8157 | 0.7475 | 0.8977 | 0.6888 |
+| U-Net v0.4 | 11 bands; separately trained U-Net | 0.8009 | 0.7577 | 0.8493 | 0.6679 |
+| RF v0.1 (11 bands) | Classical spectral-only RF | 0.7957 | 0.7151 | 0.8967 | 0.6607 |
+| **DOFA v0.6** | **Pretrained frozen ViT-B + trainable decoder with spectral skip** | **0.7813** | 0.6889 | **0.9023** | 0.6411 |
+
+The DOFA configuration is **4.73 percentage points below** the v0.5 U-Net and **3.44 points below** the archived 19-feature RF in Marine Debris Validation F1. The table compares **separately fitted systems** on the same labeled-pixel Validation split, not matched seeds, computational budgets, or architectures. It does **not** establish that DOFA pretraining is intrinsically inferior or that the U-Net will generalize better geographically.
+
+<p align="center">
+<img src="assets/figures/dofa_v06/model_f1_comparison.png" width="85%" alt="Validation Marine Debris F1 for DOFA and previously evaluated baselines">
+</p>
+
+### Learning curves and class-specific error profile
+
+Training continued for **18 epochs**, with the highest Validation F1 (**0.7813**) at **epoch 10**. Validation F1 subsequently fluctuated while training loss generally decreased. Training loss is weighted, while the recorded validation loss is unweighted; **their absolute values are not directly comparable**.
+
+<p align="center">
+<img src="assets/figures/dofa_v06/training_curves.png" width="86%" alt="DOFA decoder training loss and validation debris F1">
+<img src="assets/figures/dofa_v06/validation_confusion_normalized.png" width="86%" alt="DOFA v0.6 normalized 15-class validation confusion matrix">
+</p>
+
+False-positive Marine Debris predictions come primarily from other surface features:
+
+| True annotated class | Predicted as Marine Debris (FP) |
+|:--|--:|
+| Ship | **88** |
+| Sparse Sargassum | **68** |
+| Mixed Water | **59** |
+| Natural Organic Material | **51** |
+| Waves | **51** |
+| Dense Sargassum | 43 |
+| Marine Water | 40 |
+| Turbid Water | 16 |
+| Foam | 15 |
+| Wakes | 7 |
+| **Clouds** | **0** |
+| **Sediment-Laden Water** | **0** |
+
+The remaining annotated classes also contributed **zero** false positives in this run. The absence of **Clouds → Debris** and **Sediment-Laden Water → Debris** confusion applies **only to this official Validation evaluation**; it must not be generalized to Test or unseen regions.
+
+### Representative validation error cases
+
+| Patch | TP | FP | FN | Labeled debris pixels | Observation |
+|:--|--:|--:|--:|--:|:--|
+| `S2_12-1-17_16PEC_15.tif` | 0 | **52** | 0 | 0 | Largest recorded patch-level FP count |
+| `S2_18-1-18_48PZC_23.tif` | 0 | **46** | 0 | 0 | Errors without annotated debris |
+| `S2_14-3-20_18QYF_3.tif` | 44 | **44** | 1 | 45 | Correct detections mixed with false alarms |
+| `S2_11-6-18_16PCC_51.tif` | 0 | **39** | 0 | 0 | Another debris-negative annotated patch |
+
+The previously problematic sediment patch `S2_11-6-18_16PCC_26.tif` had **112 RF false positives** in the v0.2 visual diagnostic but **zero DOFA false positives** in the current run. This is a **localized observation**, not evidence of a general sediment solution. Several high-FP DOFA patches have no annotated Marine Debris; the unlabeled portions of those images remain unscored.
+
+<p align="center">
+<img src="assets/figures/dofa_v06/S2_11-6-18_16PCC_26_val_visual_comparison.png" width="96%" alt="DOFA validation visualization for the previously difficult sediment patch">
+<img src="assets/figures/dofa_v06/S2_12-1-17_16PEC_15_val_visual_comparison.png" width="96%" alt="DOFA validation visualization for a false-positive-heavy patch with no labeled debris">
+</p>
+
+<details>
+<summary><b>View two more DOFA validation case studies</b></summary>
+
+<p align="center">
+<img src="assets/figures/dofa_v06/S2_14-3-20_18QYF_3_val_visual_comparison.png" width="90%" alt="DOFA mixed true- and false-positive validation scene">
+<img src="assets/figures/dofa_v06/S2_18-1-18_48PZC_23_val_visual_comparison.png" width="90%" alt="DOFA no-debris-label validation scene with false positives">
+</p>
+
+</details>
+
+### What the DOFA result does—and does not—establish
+
+This is a **successful pretrained-model integration and frozen feature-transfer experiment**, but not an improvement in overall Validation F1 over the existing U-Net or RF baselines. Its different cloud/sediment error profile is informative, but cannot by itself establish a benefit from pretraining, because the decoder also receives the raw spectral bands.
+
+A controlled follow-up should compare **spectral-skip only**, **DOFA tokens only**, and **DOFA tokens + spectral skip** with otherwise matched decoders and validation protocols. If those controls demonstrate value from frozen DOFA features, **adapter / partial-backbone / LoRA tuning** becomes a better-justified next step. Independent geographically disjoint evaluation is still needed to assess transfer outside the familiar Tile IDs.
+
+**Artifacts:** `results/dofa_v06/validation_metrics.csv`, `training_history.csv`, `validation_confusion.csv`, `validation_patch_errors.csv`, `validation_fp_by_true_class.csv`, `validation_model_comparison.csv`, and `run_config.json`; figures in `assets/figures/dofa_v06/`. See [DOFA transfer protocol](docs/dofa_frozen_transfer.md) and [recorded v0.6 research findings](docs/dofa_v06_validation_findings.md).
+
+**Sources:** [DOFA source code](https://github.com/zhu-xlab/DOFA) · [pretrained weights](https://huggingface.co/earthflow/DOFA) · [MARIDA dataset](https://zenodo.org/records/5151941).
+
 ## Cross-Experiment Synthesis
 
 The completed experiments support the following bounded conclusions:
@@ -471,14 +600,16 @@ The completed experiments support the following bounded conclusions:
 - **RF performance on held-out Tile IDs is highly heterogeneous**. A sediment-heavy acquisition within Tile `16PDC` dominates the false-positive burden in the grouped Train-only study.
 - **U-Net can eliminate a difficult local sediment false alarm**, but the completed v0.4 U-Net has substantially lower official-test debris F1 than the archived RF and is especially vulnerable to cloud/wave confusions on that split.
 - **The controlled v0.5 changes do not improve overall validation F1** beyond the replayed reference, and the highest v0.5 validation score is not evidence of better unseen-area performance.
+- **Pretrained DOFA v0.6 was integrated and validated**, with complete verified checkpoint loading and frozen features for 694 Train and 328 Validation patches. Its **0.7813 Validation F1** is below the best previous U-Net and the archived RF, but it shows a different pattern of false positives.
+- **A frozen encoder plus raw-spectral skip does not isolate pretraining.** Additional matched controls and independent geographic evaluation are needed before claiming transfer-learning benefits.
 
-The next research milestone is **evaluation on independent geographically disjoint scenes** and, subject to a matched protocol, **remote-sensing pretrained encoders / foundation models**. These are future experiments, **not results reported by this README**.
+The next research milestone is a **controlled contribution-of-pretraining experiment**, followed by geographically independent evaluation and, if supported, parameter-efficient adaptation. These are **future experiments**, not measured v0.6 outcomes.
 
 ## Dataset
 
 The [MARIDA benchmark](https://zenodo.org/records/5151941) contains **1,381 Sentinel-2 image patches (256 × 256 pixels)**, **11 spectral bands**, masks with sparse/weak pixel-level annotations for **15 marine classes**, confidence labels, GIS resources, and official split manifests.
 
-The annotated-pixel HDF5 export powers the classical RF experiments. The **U-Net reads original multispectral GeoTIFF patches and class/confidence masks**, with training/validation/test identities taken from the official split lists. Missing annotation (`0`) is **excluded from both supervised loss and evaluation**; it is never equated to an ocean-background class.
+The annotated-pixel HDF5 export powers the classical RF experiments. The **U-Net and DOFA feature-extraction pipeline read original multispectral GeoTIFF patches and class/confidence masks**, with training/validation/test identities taken from the official split lists. Missing annotation (`0`) is **excluded from both supervised loss and evaluation**; it is never equated to an ocean-background class.
 
 ```text
 baseline/data/
@@ -502,7 +633,7 @@ The actual split totals checked by the v0.4 data script were **694 train**, **32
 
 **Working setup:** Windows / PyCharm, Python 3.11 in a Conda environment. The v0.4 GPU diagnostic succeeded on an **NVIDIA GeForce RTX 5070 Laptop GPU** with PyTorch `2.12.0.dev20260408+cu128`, CUDA 12.8, and compute capability `sm_120`. This is a record of the tested environment, **not a recommendation to pin a nightly version**. Install a current compatible PyTorch/CUDA build from [PyTorch's official installer](https://pytorch.org/get-started/locally/) for your GPU and operating system.
 
-The Python scripts are designed for **PyCharm → Run**, without command-line arguments. Install the packages listed in [`requirements.txt`](requirements.txt); HDF5/Pandas needs `tables` (PyTables), and image input/plots need `tifffile`, `numpy`, `pandas`, and `matplotlib`. The U-Net stages additionally require compatible `torch`.
+The Python scripts are designed for **PyCharm → Run**, without command-line arguments. Install the packages listed in [`requirements.txt`](requirements.txt); HDF5/Pandas needs `tables` (PyTables), and image input/plots need `tifffile`, `numpy`, `pandas`, and `matplotlib`. The U-Net stages additionally require compatible `torch`. For v0.6 DOFA, see [`requirements-dofa.txt`](requirements-dofa.txt) for the additional model dependencies (`timm`, `huggingface_hub`). The recorded weights were obtained using the DOFA upstream source and Hugging Face; initial setup needs internet access, while local cached feature training does not.
 
 ### Workflow by stage
 
@@ -527,8 +658,11 @@ The Python scripts are designed for **PyCharm → Run**, without command-line ar
 | 17 | [`17_evaluate_unet.py`](baseline/17_evaluate_unet.py) | Evaluate completed v0.4 U-Net | `results/unet/`, prediction maps |
 | 18 | [`18_train_unet_v05.py`](baseline/18_train_unet_v05.py) | Train four controlled U-Net variants | `results/unet_v05/`, checkpoints |
 | 19 | [`19_analyze_unet_v05.py`](baseline/19_analyze_unet_v05.py) | Compare v0.5 variants on **validation only** | Patch-level diagnostics/figures when executed |
+| 20 | [`20_prepare_dofa.py`](baseline/20_prepare_dofa.py) | Verify real DOFA pretrained weights, calculate Train-only statistics, cache frozen tokens for Train/Validation | `baseline/cache/dofa_v06/` |
+| 21 | [`21_train_dofa_head.py`](baseline/21_train_dofa_head.py) | Train the dense segmentation decoder; keep DOFA frozen | Local decoder checkpoint, training history |
+| 22 | [`22_analyze_dofa.py`](baseline/22_analyze_dofa.py) | Evaluate DOFA on official Validation, make error maps/confusion matrix, compare historical baselines | `results/dofa_v06/`, `assets/figures/dofa_v06/` |
 
-**Execution order:** script 14 follows the Tile audit (13); script 16 follows the GPU diagnostic (15); script 17 follows a successful v0.4 training run (16). **For v0.5 run 18 first, then 19**; the earlier stages do not need to be rerun just to execute these files. Scripts 18–19 do not read official Test. Models used in v0.5 are saved under `models/unet_v05/` and do not overwrite `models/unet_best.pt` from v0.4.
+**Execution order:** script 14 follows the Tile audit (13); script 16 follows the GPU diagnostic (15); script 17 follows a successful v0.4 training run (16). **For v0.5 run 18 first, then 19**; the earlier stages do not need to be rerun just to execute these files. Scripts 18–19 do not read official Test. Models used in v0.5 are saved under `models/unet_v05/` and do not overwrite `models/unet_best.pt` from v0.4. **For v0.6, run 20 → 21 → 22**; all three stages are complete in the recorded experiment, and no v0.6 Test result has been generated. DOFA pretrained features and checkpoints stay local and should not be committed.
 
 ### Outputs and experiment isolation
 
@@ -540,6 +674,9 @@ The Python scripts are designed for **PyCharm → Run**, without command-line ar
 | `results/geographic_holdout/` | v0.3.2 Tile audit, grouped folds and confusion counts |
 | `results/unet/` | v0.4 training, validation/test diagnostics and comparisons |
 | `results/unet_v05/` | v0.5 controlled runs and **validation-only** evaluation |
+| `results/dofa_v06/` | v0.6 verified decoder training and official-Validation metrics / errors |
+| `assets/figures/dofa_v06/` | v0.6 learning curves, model comparison, confusion and patch figures |
+| `baseline/cache/dofa_v06/` | Large frozen DOFA feature maps; keep out of Git |
 | `assets/figures/<stage>/` | Figures suitable for Markdown/GitHub |
 | `models/`, `baseline/data/`, `results/runs/latest/` | Local training artifacts and raw data; normally excluded from Git |
 
@@ -552,6 +689,7 @@ MARIDA-SpectralBench/
 ├── README.md
 ├── LICENSE
 ├── requirements.txt
+├── requirements-dofa.txt           # Additional DOFA dependencies
 ├── .gitignore
 ├── assets/
 │   └── figures/
@@ -562,11 +700,13 @@ MARIDA-SpectralBench/
 │       ├── robustness/
 │       ├── geographic_holdout/       # Held-out Tile F1 / FP charts
 │       ├── unet/                     # Loss, confusion matrices, patch overlays
-│       └── unet_v05/                 # Controlled U-Net learning curves
+│       ├── unet_v05/                 # Controlled U-Net learning curves
+│       └── dofa_v06/                 # Frozen-DOFA transfer plots and patch overlays
 ├── baseline/
 │   ├── settings.py
 │   ├── spectral_features.py
 │   ├── unet_core.py               # Shared U-Net architecture and GeoTIFF loader
+│   ├── dofa_transfer.py            # DOFA encoder/decoder and cached-feature utilities
 │   ├── 01_inspect_dataset.py
 │   ├── ...
 │   ├── 14_geographic_holdout.py
@@ -575,6 +715,10 @@ MARIDA-SpectralBench/
 │   ├── 17_evaluate_unet.py
 │   ├── 18_train_unet_v05.py
 │   ├── 19_analyze_unet_v05.py
+│   ├── 20_prepare_dofa.py
+│   ├── 21_train_dofa_head.py
+│   ├── 22_analyze_dofa.py
+│   ├── cache/                      # DOFA feature cache; local only
 │   └── data/                      # Local-only official MARIDA input
 ├── docs/
 │   ├── dataset_and_protocol.md
@@ -585,7 +729,9 @@ MARIDA-SpectralBench/
 │   ├── robustness_and_scene_analysis.md
 │   ├── geographic_holdout.md
 │   ├── unet_segmentation.md
-│   └── unet_v05_controlled_ablation.md
+│   ├── unet_v05_controlled_ablation.md
+│   ├── dofa_frozen_transfer.md
+│   └── dofa_v06_validation_findings.md
 ├── models/                         # Local-only .joblib / .pt checkpoints
 ├── results/
 │   ├── benchmark/
@@ -596,6 +742,7 @@ MARIDA-SpectralBench/
 │   ├── geographic_holdout/
 │   ├── unet/
 │   ├── unet_v05/
+│   ├── dofa_v06/
 │   └── runs/                      # Local interim run outputs
 └── tests/
     └── check_features.py
@@ -605,27 +752,30 @@ The tree is the **intended local project layout**. Only paths you actually add a
 
 ## Limitations and Next Steps
 
-The current results constitute a **classical baseline, documented failure analyses, a grouped RF stress test, and two generations of U-Net experiments**. They do **not** establish a state-of-the-art marine debris detector or reliable transfer to arbitrary unseen coastal waters.
+The current results constitute a **classical baseline, documented failure analyses, a grouped RF stress test, two generations of U-Net experiments, and a verified pretrained DOFA frozen-transfer experiment**. They do **not** establish a state-of-the-art marine debris detector or reliable transfer to arbitrary unseen coastal waters.
 
 ### Interpretation boundaries
 
 - **Sparse labels:** Evaluation is limited to annotated class-1–15 pixels; unlabeled areas are never counted as true negatives. Reported rates are **not full-image debris-detection rates**.
 - **Not a controlled architecture-only comparison:** RF with 19 engineered/spectral features and U-Net with 11 raw bands differ in training procedure, sampling, loss, and model family. Their scores describe the tested systems, not a clean causal effect of convolution.
-- **Official Test has been seen:** v0.1 RF and v0.4 U-Net Test results are historical reports. Model redesign after inspecting them reduces the independence of that split for later studies. **No v0.5 Test result is claimed.** A new independent or properly pre-registered final evaluation is required for confirmatory conclusions.
+- **Official Test has been seen:** v0.1 RF and v0.4 U-Net Test results are historical reports. Model redesign after inspecting them reduces the independence of that split for later studies. **No v0.5 or v0.6 Test result is claimed.** A new independent or properly pre-registered final evaluation is required for confirmatory conclusions.
 - **Geographic independence is approximate:** 5 of the 7 official-validation Tile IDs overlap with Train. The grouped v0.3.2 experiment prevents identical Tile IDs across fit/evaluation folds, but exact footprint nonoverlap has not been audited.
 - **Heterogeneous class support:** Some Tiles have almost no annotated debris; pooled and Tile-macro metrics answer different questions and can favor different models.
 - **Small robustness samples:** The RF ablation uses five seeds, v0.3.2 uses one seed, and the U-Net experiments reported here use one seed. Their variations are not independent-scene uncertainty estimates.
 - **Scene-specific errors:** Large false-positive concentrations in `16PDC`/sediment scenes and v0.4 Test cloud/wave confusions cannot be explained causally from confusion tables alone.
 - **Data verification scope:** HDF5–GeoTIFF spectra and labels agreed for 411 sampled records in 3 patches, but exact pixel coordinate and entire-archive agreement remain unverified.
+- **Frozen DOFA is not full fine-tuning:** v0.6 keeps the ViT-B encoder fixed. Its decoder receives both pretrained tokens and raw spectral bands; a matched skip-only and token-only ablation is necessary before attributing benefits to pretraining.
+- **Pretraining and preprocessing domain mismatch:** the project uses Train-only band normalization, which may differ from the original DOFA pretraining normalization. No normalization-ablation or adapter study has yet been completed.
 - **Model artifacts:** Checkpoint files and raw dataset files are local and excluded from version control; a README alone cannot reproduce a run without those inputs and its configuration.
 
 ### Next research milestones (not yet completed)
 
-1. **Complete the v0.5 validation diagnostics:** run script 19 where necessary and export per-patch error maps for the difficult validation scenes. Maintain strict separation from the previously inspected Test during model selection.
-2. **Independent geographic evaluation of a selected model:** create a documented spatially disjoint split or acquire independently labeled scenes, verify spatial footprints and class support, and compare the selected RF and U-Net on the *same* evaluation observations.
-3. **Remote-sensing pretrained encoders:** benchmark a suitable multispectral foundation-model encoder against the 11-band U-Net with comparable training budgets and documented initialization/preprocessing.
-4. **Repeatability and uncertainty:** train promising U-Net configurations across multiple seeds and report scene-/Tile-aware uncertainty, rather than treating neighboring pixels as independent samples.
-5. **Physically interpretable error studies:** examine difficult sediment/cloud/wave regions with coregistered spectra, labels, metadata, and calibration checks before making a mechanism claim.
+1. **Isolate the role of DOFA pretraining:** train matched decoders using raw spectral skip only, frozen DOFA tokens only, and both inputs. Preserve the same Train/Validation protocol and do not use historical Test for selection.
+2. **Evaluate parameter-efficient adaptation if justified:** explore adapter/LoRA or partial-encoder tuning with documented compute cost and pretrained initialization, rather than assuming full fine-tuning must improve performance.
+3. **Independent geographic evaluation of selected models:** create a carefully documented spatially disjoint evaluation or acquire independently labeled scenes; verify actual footprints and class support, then compare RF, U-Net and DOFA on the *same* observations.
+4. **Repeatability and uncertainty:** repeat promising U-Net/DOFA configurations across multiple seeds and quantify scene-/Tile-aware variability, rather than treating neighboring pixels as independent samples.
+5. **Physically interpretable error studies:** analyze sediment, cloud, wave, ship and organic-material confusions with co-registered spectra and annotations before making any mechanistic claim.
+6. **Complete optional v0.5 visual diagnostics:** if needed, run script 19 to export per-patch maps for difficult Validation scenes.
 
 The project aims to produce **auditable research evidence**: a higher validation F1 alone is not an assertion of meaningful, independent generalization.
 
@@ -639,7 +789,11 @@ Kikaki, K., Kakogeorgiou, I., Mikeli, P., Raitsos, D. E., & Karantzalos, K. (202
 
 Liu, F., et al. (2024). *RemoteCLIP: A Vision Language Foundation Model for Remote Sensing*. *IEEE Transactions on Geoscience and Remote Sensing*. https://doi.org/10.1109/TGRS.2024.3390838
 
-This is an independent benchmark project and is **not affiliated with the MARIDA or RemoteCLIP authors**.
+**DOFA pretrained remote-sensing model**
+
+Xiong, Z., et al. (2024). *Neural Plasticity-Inspired Multimodal Foundation Model for Observing the Earth Crossing Modalities*. https://arxiv.org/abs/2403.15356 · [official source](https://github.com/zhu-xlab/DOFA) · [pretrained weights](https://huggingface.co/earthflow/DOFA)
+
+This is an independent benchmark project and is **not affiliated with the MARIDA, DOFA, or RemoteCLIP authors**.
 
 ## Maintainer
 
