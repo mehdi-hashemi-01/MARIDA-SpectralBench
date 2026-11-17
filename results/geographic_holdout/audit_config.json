@@ -1,0 +1,13 @@
+{
+  "version": "v0.3.2",
+  "source_hdf_key": "/train",
+  "original_val_read": false,
+  "original_test_read": false,
+  "method": "Leave-One-Tile-Out (LOTO), geographic proxy = Tile metadata",
+  "all_eligible_tiles_evaluated": true,
+  "min_debris_for_informative_f1_warning_only": 20,
+  "total_train_labeled_pixels": 429412,
+  "total_debris_pixels": 1943,
+  "total_tiles": 13,
+  "runnable_folds": 13
+}

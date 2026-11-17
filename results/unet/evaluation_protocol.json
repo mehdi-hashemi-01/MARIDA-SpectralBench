@@ -1,0 +1,9 @@
+{
+  "checkpoint_selected_by": "validation Marine Debris F1",
+  "checkpoint_epoch": 33,
+  "test_touched_during_training": false,
+  "test_evaluated_now": true,
+  "scored_pixels": "annotated class IDs 1..15 only; 0 ignored",
+  "rf_provenance": "previous archived benchmark; not retrained alongside this U-Net",
+  "caveat": "Do not tune or choose a new model using held-out test outcomes; original benchmark test results had already been inspected."
+}

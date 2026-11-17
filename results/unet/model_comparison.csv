@@ -1,0 +1,6 @@
+split,model,input_features,debris_f1,debris_iou,debris_precision,debris_recall,evaluated_pixels,source
+val,Random Forest: spectral_only,11 bands,0.7957078002476269,0.660726525017135,0.7151335311572701,0.8967441860465116,213102,"archived v0.1 RF, independent training run"
+val,Random Forest: spectral_plus_indices,11 bands + 8 indices,0.815722738799662,0.6887937187723054,0.7474825716498839,0.8976744186046511,213102,"archived v0.1 RF, independent training run"
+test,Random Forest: spectral_plus_indices,11 bands + 8 indices,0.6778711484593837,0.5127118644067796,0.5260869565217391,0.952755905511811,194863,"archived v0.1 RF, independent training run"
+val,U-Net 11-band,11 bands + spatial neighborhood,0.8008771929824562,0.667885881492319,0.7576763485477178,0.8493023255813954,213102,"v0.4 U-Net best-epoch checkpoint, same official split"
+test,U-Net 11-band,11 bands + spatial neighborhood,0.38508557457212717,0.2384557153671461,0.250996015936255,0.8267716535433071,194863,"v0.4 U-Net best-epoch checkpoint, same official split"

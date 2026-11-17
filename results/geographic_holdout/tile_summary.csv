@@ -1,0 +1,14 @@
+tile,labeled_pixels,marine_debris_pixels,non_debris_pixels,debris_percent,classes_present,scene_count,patch_count,training_debris_pixels_excluding_tile,training_classes_excluding_tile,run_fold,interpretation_note
+16PCC,279618,841,278777,0.30077,15,9,299,1102,15,True,debris_support_ok
+16PDC,44547,67,44480,0.1504,14,3,81,1876,15,True,debris_support_ok
+16PEC,33140,118,33022,0.35607,14,4,124,1825,15,True,debris_support_ok
+16QED,7430,0,7430,0.0,8,1,19,1943,15,True,no_true_debris__f1_not_defined
+18QWF,1785,0,1785,0.0,2,1,6,1943,15,True,no_true_debris__f1_not_defined
+18QYF,9862,606,9256,6.1448,10,9,59,1337,15,True,debris_support_ok
+19QDA,190,0,190,0.0,6,1,5,1943,15,True,no_true_debris__f1_not_defined
+30VWH,29936,27,29909,0.09019,5,1,10,1916,15,True,debris_support_ok
+36JUN,5089,46,5043,0.90391,6,1,21,1897,15,True,debris_support_ok
+48MXU,7223,208,7015,2.87969,9,2,39,1735,15,True,debris_support_ok
+48MYU,1207,24,1183,1.9884,6,2,6,1919,15,True,debris_support_ok
+48PZC,4458,2,4456,0.04486,5,1,9,1941,15,True,few_true_debris__interpret_with_care
+52SDD,4927,4,4923,0.08119,9,1,16,1939,15,True,few_true_debris__interpret_with_care

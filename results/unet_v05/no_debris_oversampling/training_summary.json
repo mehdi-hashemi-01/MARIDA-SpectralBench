@@ -1,0 +1,9 @@
+{
+  "best_epoch": 22,
+  "best_val_f1": 0.8224211022138483,
+  "epochs_completed": 32,
+  "train_seconds": 16106.68,
+  "checkpoint": "C:\\Users\\Mehti\\Documents\\GitHub\\MARIDA-SpectralBench\\models\\unet_v05\\no_debris_oversampling_best.pt",
+  "test_evaluated": false,
+  "smoke_mode": false
+}

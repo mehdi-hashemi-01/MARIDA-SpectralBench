@@ -1,0 +1,196 @@
+tile,class,labeled_pixels
+16PCC,Marine Debris,841
+16PCC,Dense Sargassum,313
+16PCC,Sparse Sargassum,234
+16PCC,Natural Organic Material,28
+16PCC,Ship,1550
+16PCC,Clouds,33762
+16PCC,Marine Water,36779
+16PCC,Sediment-Laden Water,124786
+16PCC,Foam,213
+16PCC,Turbid Water,71471
+16PCC,Shallow Water,3166
+16PCC,Waves,1406
+16PCC,Cloud Shadows,1382
+16PCC,Wakes,3589
+16PCC,Mixed Water,98
+16PDC,Marine Debris,67
+16PDC,Dense Sargassum,12
+16PDC,Sparse Sargassum,82
+16PDC,Natural Organic Material,57
+16PDC,Ship,49
+16PDC,Clouds,2797
+16PDC,Marine Water,5092
+16PDC,Sediment-Laden Water,27958
+16PDC,Foam,235
+16PDC,Turbid Water,6310
+16PDC,Shallow Water,1605
+16PDC,Waves,0
+16PDC,Cloud Shadows,119
+16PDC,Wakes,124
+16PDC,Mixed Water,40
+16PEC,Marine Debris,118
+16PEC,Dense Sargassum,184
+16PEC,Sparse Sargassum,499
+16PEC,Natural Organic Material,193
+16PEC,Ship,220
+16PEC,Clouds,8367
+16PEC,Marine Water,13575
+16PEC,Sediment-Laden Water,0
+16PEC,Foam,17
+16PEC,Turbid Water,4673
+16PEC,Shallow Water,3235
+16PEC,Waves,108
+16PEC,Cloud Shadows,1558
+16PEC,Wakes,357
+16PEC,Mixed Water,36
+16QED,Marine Debris,0
+16QED,Dense Sargassum,357
+16QED,Sparse Sargassum,55
+16QED,Natural Organic Material,0
+16QED,Ship,65
+16QED,Clouds,514
+16QED,Marine Water,1377
+16QED,Sediment-Laden Water,0
+16QED,Foam,0
+16QED,Turbid Water,0
+16QED,Shallow Water,4803
+16QED,Waves,0
+16QED,Cloud Shadows,84
+16QED,Wakes,175
+16QED,Mixed Water,0
+18QWF,Marine Debris,0
+18QWF,Dense Sargassum,0
+18QWF,Sparse Sargassum,0
+18QWF,Natural Organic Material,0
+18QWF,Ship,0
+18QWF,Clouds,0
+18QWF,Marine Water,324
+18QWF,Sediment-Laden Water,0
+18QWF,Foam,0
+18QWF,Turbid Water,0
+18QWF,Shallow Water,0
+18QWF,Waves,1461
+18QWF,Cloud Shadows,0
+18QWF,Wakes,0
+18QWF,Mixed Water,0
+18QYF,Marine Debris,606
+18QYF,Dense Sargassum,4
+18QYF,Sparse Sargassum,200
+18QYF,Natural Organic Material,114
+18QYF,Ship,345
+18QYF,Clouds,6723
+18QYF,Marine Water,876
+18QYF,Sediment-Laden Water,0
+18QYF,Foam,0
+18QYF,Turbid Water,0
+18QYF,Shallow Water,910
+18QYF,Waves,0
+18QYF,Cloud Shadows,0
+18QYF,Wakes,48
+18QYF,Mixed Water,36
+19QDA,Marine Debris,0
+19QDA,Dense Sargassum,0
+19QDA,Sparse Sargassum,21
+19QDA,Natural Organic Material,3
+19QDA,Ship,11
+19QDA,Clouds,0
+19QDA,Marine Water,110
+19QDA,Sediment-Laden Water,0
+19QDA,Foam,0
+19QDA,Turbid Water,5
+19QDA,Shallow Water,40
+19QDA,Waves,0
+19QDA,Cloud Shadows,0
+19QDA,Wakes,0
+19QDA,Mixed Water,0
+30VWH,Marine Debris,27
+30VWH,Dense Sargassum,0
+30VWH,Sparse Sargassum,0
+30VWH,Natural Organic Material,0
+30VWH,Ship,36
+30VWH,Clouds,3505
+30VWH,Marine Water,24393
+30VWH,Sediment-Laden Water,0
+30VWH,Foam,0
+30VWH,Turbid Water,0
+30VWH,Shallow Water,0
+30VWH,Waves,0
+30VWH,Cloud Shadows,1975
+30VWH,Wakes,0
+30VWH,Mixed Water,0
+36JUN,Marine Debris,46
+36JUN,Dense Sargassum,0
+36JUN,Sparse Sargassum,0
+36JUN,Natural Organic Material,0
+36JUN,Ship,625
+36JUN,Clouds,3500
+36JUN,Marine Water,600
+36JUN,Sediment-Laden Water,0
+36JUN,Foam,0
+36JUN,Turbid Water,300
+36JUN,Shallow Water,0
+36JUN,Waves,0
+36JUN,Cloud Shadows,0
+36JUN,Wakes,18
+36JUN,Mixed Water,0
+48MXU,Marine Debris,208
+48MXU,Dense Sargassum,0
+48MXU,Sparse Sargassum,0
+48MXU,Natural Organic Material,0
+48MXU,Ship,71
+48MXU,Clouds,5807
+48MXU,Marine Water,194
+48MXU,Sediment-Laden Water,0
+48MXU,Foam,0
+48MXU,Turbid Water,382
+48MXU,Shallow Water,45
+48MXU,Waves,0
+48MXU,Cloud Shadows,489
+48MXU,Wakes,15
+48MXU,Mixed Water,12
+48MYU,Marine Debris,24
+48MYU,Dense Sargassum,0
+48MYU,Sparse Sargassum,0
+48MYU,Natural Organic Material,0
+48MYU,Ship,223
+48MYU,Clouds,0
+48MYU,Marine Water,291
+48MYU,Sediment-Laden Water,0
+48MYU,Foam,0
+48MYU,Turbid Water,10
+48MYU,Shallow Water,48
+48MYU,Waves,0
+48MYU,Cloud Shadows,0
+48MYU,Wakes,611
+48MYU,Mixed Water,0
+48PZC,Marine Debris,2
+48PZC,Dense Sargassum,0
+48PZC,Sparse Sargassum,0
+48PZC,Natural Organic Material,0
+48PZC,Ship,0
+48PZC,Clouds,320
+48PZC,Marine Water,850
+48PZC,Sediment-Laden Water,0
+48PZC,Foam,0
+48PZC,Turbid Water,3218
+48PZC,Shallow Water,0
+48PZC,Waves,0
+48PZC,Cloud Shadows,68
+48PZC,Wakes,0
+48PZC,Mixed Water,0
+52SDD,Marine Debris,4
+52SDD,Dense Sargassum,0
+52SDD,Sparse Sargassum,0
+52SDD,Natural Organic Material,328
+52SDD,Ship,94
+52SDD,Clouds,0
+52SDD,Marine Water,2416
+52SDD,Sediment-Laden Water,1591
+52SDD,Foam,4
+52SDD,Turbid Water,451
+52SDD,Shallow Water,0
+52SDD,Waves,0
+52SDD,Cloud Shadows,0
+52SDD,Wakes,37
+52SDD,Mixed Water,2

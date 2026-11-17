@@ -1,0 +1,21 @@
+{
+  "status": "complete",
+  "folds_completed": 13,
+  "folds_planned": 13,
+  "all_eligible_folds_executed": true,
+  "completed_tiles": [
+    "16PCC",
+    "16PDC",
+    "16PEC",
+    "16QED",
+    "18QWF",
+    "18QYF",
+    "19QDA",
+    "30VWH",
+    "36JUN",
+    "48MXU",
+    "48MYU",
+    "48PZC",
+    "52SDD"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "best_epoch": 4,
+  "best_val_f1": 0.6461787302871007,
+  "epochs_completed": 14,
+  "train_seconds": 379.02,
+  "checkpoint": "C:\\Users\\Mehti\\Documents\\GitHub\\MARIDA-SpectralBench\\models\\unet_v05\\extra_spectral_jitter_best.pt",
+  "test_evaluated": false,
+  "smoke_mode": false
+}

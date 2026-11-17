@@ -1,0 +1,14 @@
+tile,labeled_pixels,marine_debris_pixels,run_fold,interpretation_note
+16PCC,279618,841,True,debris_support_ok
+16PDC,44547,67,True,debris_support_ok
+16PEC,33140,118,True,debris_support_ok
+16QED,7430,0,True,no_true_debris__f1_not_defined
+18QWF,1785,0,True,no_true_debris__f1_not_defined
+18QYF,9862,606,True,debris_support_ok
+19QDA,190,0,True,no_true_debris__f1_not_defined
+30VWH,29936,27,True,debris_support_ok
+36JUN,5089,46,True,debris_support_ok
+48MXU,7223,208,True,debris_support_ok
+48MYU,1207,24,True,debris_support_ok
+48PZC,4458,2,True,few_true_debris__interpret_with_care
+52SDD,4927,4,True,few_true_debris__interpret_with_care

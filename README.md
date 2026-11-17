@@ -2,50 +2,64 @@
 
 # MARIDA-SpectralBench
 
-**Spectral Benchmarks, Feature Ablation, and Scene-Level Error Analysis for Marine Debris Detection**
+**From Spectral Random Forest Baselines to Multispectral U-Net Segmentation**
 
-Reproducible pixel-level Random Forest experiments on Sentinel-2 multispectral imagery using the MARIDA benchmark, from classical baselines through feature ablation and repeated-seed, scene-aware diagnostics.
+*A reproducible, failure-driven investigation of marine debris detection in Sentinel-2 imagery using MARIDA.*
 
 [![Python](https://img.shields.io/badge/Python-3.11-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![PyTorch](https://img.shields.io/badge/PyTorch-CUDA_Enabled-EE4C2C?logo=pytorch&logoColor=white)](https://pytorch.org/)
 [![Dataset](https://img.shields.io/badge/Dataset-MARIDA-1B7189)](https://zenodo.org/records/5151941)
 [![License](https://img.shields.io/badge/License-MIT-177245)](LICENSE)
-[![Stage](https://img.shields.io/badge/Stage-v0.3.1_Robustness-475569)](#multi-seed-robustness-and-scene-analysis-v031)
+[![Stage](https://img.shields.io/badge/Research_Stage-v0.5_UNet_Ablations-475569)](#controlled-u-net-training-ablations-v05)
 
-[Overview](#overview) · [Benchmark](#benchmark-results) · [Visual Errors](#validation-patch-level-error-analysis) · [Data Verification](#hdf5geotiff-consistency-check) · [Ablation](#feature-ablation-v03) · [Robustness](#multi-seed-robustness-and-scene-analysis-v031) · [Reproduce](#reproduction) · [References](#references)
+[Overview](#overview) · [RF Baseline](#benchmark-results) · [Feature Ablation](#feature-ablation-v03) · [Robustness](#multi-seed-robustness-and-scene-analysis-v031) · [Geographic Holdout](#geographic-holdout-v032) · [U-Net](#multispectral-u-net-segmentation-v04) · [U-Net Ablations](#controlled-u-net-training-ablations-v05) · [Reproduce](#reproduction)
 
-<img src="assets/figures/pipeline.png" width="100%" alt="MARIDA spectral benchmark workflow">
+<img src="assets/figures/pipeline.png" width="100%" alt="Classical MARIDA baseline workflow">
 
 </div>
 
 ## Overview
 
-Detecting floating marine debris in satellite imagery is challenging because debris may be confused with sediment-laden water, waves, clouds, vessels, organic matter, and other surface phenomena. This repository investigates the strengths and limitations of pixel-level spectral classification on [MARIDA](https://zenodo.org/records/5151941), with an emphasis on **reproducible baselines and observable failure cases**.
+Marine debris in Sentinel-2 observations can be confused with sediment-laden water, ships, wakes, waves, clouds, foam, and natural floating material. This repository follows those **measured failure modes** from a pixel-level **Random Forest (RF)** baseline to an **11-band, 15-class U-Net**, with a focus on transparent protocols, reproducible experiment outputs, and honest evaluation limits.
 
-The current work includes:
+The project asks four linked questions:
 
-- **Spectral baseline:** Random Forest trained on 11 Sentinel-2 spectral bands.
-- **Feature engineering:** A second Random Forest using the same bands plus NDVI, FAI, FDI, SI, NDWI, NRD, NDMI, and BSI (19 features in total).
-- **Quantitative evaluation:** Class-level F1, IoU, precision, recall, confusion matrices, and error counts.
-- **Feature dependence:** Permutation-based sensitivity analysis on validation observations.
-- **Visual error analysis:** Georeferenced image patches displayed alongside annotated class masks, model predictions, and localized errors.
-- **Input consistency:** Checks of HDF5 spectral records against the corresponding GeoTIFF signatures and annotated class masks.
-- **Feature ablation (v0.3):** Retraining six matched Random Forest variants to test the value of NDMI, NDWI, FDI, and the engineered indices collectively.
-- **Robustness and scene errors (v0.3.1):** Five training seeds (30 model fits), paired comparisons, error attribution by patch/date/tile, and metadata-overlap checks.
+1. Do engineered spectral indices improve pixel-level debris detection over the 11 Sentinel-2 bands alone?
+2. Are those improvements stable across training seeds, scene conditions, and held-out geographic Tile IDs?
+3. Can a spatial segmentation model use neighboring pixels to reduce difficult false alarms?
+4. Which training choices help or harm a multispectral U-Net on the official validation split?
 
-**Scope.** The implemented models are classical pixel classifiers, not full-image semantic segmentation networks, multimodal vision-language systems, or foundation models. Engineered spectral indices are functions of the input bands and do not constitute an independent data modality.
+### Completed research stages
 
-### Results at a glance
+| Stage | Experiment | Status | Primary question |
+|:--|:--|:--|:--|
+| v0.1 | Spectral RF benchmark | Completed | Do 8 derived indices improve an 11-band RF baseline? |
+| v0.2 | Visual error analysis + HDF5/GeoTIFF check | Completed | Where are the errors and are input values consistent? |
+| v0.3 | Six-way spectral feature ablation | Completed | What changes when selected indices are removed and models retrained? |
+| v0.3.1 | Five-seed robustness and scene analysis | Completed | Are feature effects and errors stable across seeds/scenes? |
+| v0.3.2 | Leave-one-Tile-out RF evaluation | Completed | How does RF behave on held-out geographic Tile IDs? |
+| v0.4 | 11-band, 15-class U-Net | Completed | Does learned spatial context improve marine debris detection? |
+| **v0.5** | **Controlled U-Net training ablations** | **Completed on validation** | **Do loss weights, patch sampling, or spectral jitter improve U-Net?** |
 
-| Experiment | Evaluation | Marine Debris F1 | Precision | Recall | Interpretation |
+**Scope:** RF uses individual labeled pixels and their spectral features. U-Net consumes entire 11-band image patches and predicts a 15-class mask; **metrics for both are computed only on annotated pixels**. MARIDA mask value `0` means *unlabeled*, not clean water. The engineered spectral indices derive from the same 11 bands and are **not an additional modality**.
+
+### Key results — read with their evaluation protocols
+
+| Stage / model | Evaluation | Debris F1 | Precision | Recall | Interpretation |
 |:--|:--|--:|--:|--:|:--|
-| v0.1 archived baseline | Full validation, 11-band RF | 0.7957 | 0.7151 | 0.8967 | Historical baseline run |
-| v0.1 archived baseline | Full validation, 19-feature RF | **0.8157** | 0.7475 | 0.8977 | Selected on validation |
-| v0.1 archived baseline | Held-out test, selected 19-feature RF | **0.6779** | 0.5261 | 0.9528 | Historical test evaluation; **not** used for v0.3 tuning |
-| v0.2 visual diagnostics | 60 validation patches | 0.5561 | 0.4113 | 0.8583 | Selected diagnostic subset, not full validation |
-| v0.3 feature ablation | Full validation, 19 features, seed 42 | **0.8187** | 0.7545 | 0.8949 | Separate re-training run |
-| v0.3.1 robustness | Full validation, 19 features, mean of 5 seeds | **0.8232** | 0.7623 | 0.8949 | Arithmetic mean over seeds; F1 SD = 0.0107 |
+| v0.1 — RF, 11 bands | Official validation | 0.7957 | 0.7151 | 0.8967 | Archived spectral baseline |
+| v0.1 — RF, 19 features | Official validation | 0.8157 | 0.7475 | 0.8977 | Selected archived RF |
+| v0.1 — RF, 19 features | **Official test** | **0.6779** | 0.5261 | 0.9528 | Historical test result |
+| v0.2 — RF visual diagnostic | 60 selected validation patches | 0.5561 | 0.4113 | 0.8583 | **Not** full validation |
+| v0.3 — RF, 19 features | Official validation, one new fit | 0.8187 | 0.7545 | 0.8949 | Separate seed-42 experiment |
+| v0.3.1 — RF, 19 features | Official validation, 5-seed average | 0.8232 | 0.7623 | 0.8949 | F1 SD = 0.0107 |
+| v0.3.2 — RF, 19 features | **Leave-one-Tile-out within official Train** | 0.3018 | 0.1838 | 0.8435 | Out-of-Tile pooled predictions |
+| v0.3.2 — RF, without NDWI | Same grouped evaluation | **0.3504** | 0.2217 | 0.8363 | Strongly influenced by one Tile |
+| v0.4 — U-Net, 11 bands | Official validation | 0.8009 | 0.7577 | 0.8493 | Best checkpoint: epoch 33 |
+| v0.4 — U-Net, 11 bands | **Official test** | **0.3851** | 0.2510 | 0.8268 | Worse debris F1 than archived RF |
+| **v0.5 — U-Net `v04_replay`** | **Official validation only** | **0.8286** | **0.8123** | 0.8456 | Best F1 among four v0.5 runs; no v0.5 test score |
 
-**Read these rows as distinct experiments, not a single leaderboard.** The v0.2 diagnostic subset has a different class composition. The v0.1 and v0.3/v0.3.1 models were trained in separate runs, and v0.3.1 varies both sampling and forest randomness. The v0.3.1 average and SD describe five training seeds evaluated on the *same* official validation split, not uncertainty on independent geographic test regions.
+**Do not interpret these as one common leaderboard.** The v0.2 subset, the grouped Train-only experiment, the official validation/test splits, the v0.1 RF, and separately trained U-Nets have different evaluation populations or training protocols. The official Test has been inspected in earlier stages; no further architecture/feature choices should be made *using* those test results. The v0.5 checkpoints were selected using validation, **not re-evaluated on Test**.
 
 ## Benchmark Results
 
@@ -335,11 +349,136 @@ The shared Tile IDs are `16PCC`, `16PDC`, `16PEC`, `18QYF`, and `48PZC`. Thus **
 
 **Artifacts:** `results/robustness/per_seed_validation.csv`, `summary_by_model.csv`, `paired_summary.csv`, `scene_error_summary.csv`, `patch_error_summary.csv`, `scene_ndwi_tradeoff.csv`, `train_val_group_overlap.csv`, `scene_bootstrap_descriptive.csv`, `run_config.json`, and plots in `assets/figures/robustness/`. The automatically generated narrative is stored in `results/robustness/robustness_findings.md`. See [`docs/robustness_and_scene_analysis.md`](docs/robustness_and_scene_analysis.md).
 
+## Geographic Holdout (v0.3.2)
+
+The official MARIDA train and validation partitions share five broad Tile identifiers. To evaluate a stricter grouping rule, we performed **leave-one-Tile-out cross-validation using only the official HDF5 training split**. For each of the **13 Tile IDs**, the held-out Tile contributed no training pixels to its own fold. The official validation and test partitions were **not opened** by this experiment.
+
+**Protocol:** 100-tree Random Forest (`min_samples_leaf=2`), seed 42, confidence-weighted fitting, at most 2,000 training pixels per class, training-only median imputation, and matched training samples for the three feature sets within each fold. Aggregation covers **429,412 annotated pixels**, including **1,943 labeled Marine Debris pixels**.
+
+### Pooled out-of-Tile results
+
+| Feature set | Debris F1 ↑ | Precision ↑ | Recall ↑ | IoU ↑ | TP | FP ↓ | FN ↓ |
+|:--|--:|--:|--:|--:|--:|--:|--:|
+| Full 19 features | 0.3018 | 0.1838 | **0.8435** | 0.1777 | **1,639** | 7,278 | **304** |
+| **Without NDWI** | **0.3504** | **0.2217** | 0.8363 | **0.2124** | 1,625 | **5,706** | 318 |
+| 11 spectral bands only | 0.2609 | 0.1549 | 0.8260 | 0.1500 | 1,605 | 8,755 | 338 |
+
+Dropping NDWI improves pooled F1 by **4.86 percentage points**, with **1,572 fewer false positives** but **14 more false negatives**. However, the pooled ranking is dominated by a difficult held-out Tile; this is **not evidence that removing NDWI is universally superior**.
+
+<p align="center">
+<img src="assets/figures/geographic_holdout/f1_by_heldout_tile.png" width="86%" alt="Marine Debris F1 for the three RF feature sets on each held-out Tile">
+<img src="assets/figures/geographic_holdout/fp_by_heldout_tile.png" width="86%" alt="False positive counts by held-out Tile">
+</p>
+
+### A geographically concentrated failure: Tile `16PDC`
+
+- **5,194/7,278 RF false positives (71.4%)** occur in held-out `16PDC`; **5,169** of those are labeled **Sediment-Laden Water**.
+- The acquisition group `18-9-20 / 16PDC` contributes **5,175** of the Tile's false positives.
+- On Tile `16PDC`, full RF records **53 TP, 5,194 FP, 14 FN** (**F1 = 0.0199**). Removing NDWI lowers FP to **3,192**, but its F1 remains only **0.0296**.
+- For comparison, the full RF scores **0.8444** on held-out `18QYF` (606 labeled debris pixels), showing substantial variation between regions.
+
+The **Tile-macro F1** over the ten Tiles with labeled debris is **0.5309** (full 19), **0.5204** (without NDWI), and **0.5527** (11 bands). Three additional Tiles have *no annotated debris*, so positive-class F1 is undefined for them, although their false positives count in pooled results. Some evaluated Tiles have just **2–4 positive pixels**, making their per-Tile F1 highly unstable.
+
+A **post-hoc sensitivity check**, *not a replacement benchmark*, excludes `16PDC` from pooled arithmetic: full RF F1 becomes **0.5719** versus **0.5283** without NDWI, reversing the ranking. The main reported result **retains all Tiles**.
+
+**Interpretation:** held-out Tile identifiers are fully disjoint *by identifier* in each fold, but true spatial footprint disjointness was not independently verified. This is **grouped cross-validation within official Train**, not a fresh external geographic test. Its lower F1 cannot be attributed solely to geography because the fit/evaluation observations and protocol differ from the official validation comparison. See [geographic holdout protocol](docs/geographic_holdout.md) and `results/geographic_holdout/`.
+
+## Multispectral U-Net Segmentation (v0.4)
+
+A lightweight **U-Net** was trained for 15-class segmentation from **11 Sentinel-2 bands** to test whether learned spatial neighborhoods help distinguish Marine Debris from other surface phenomena. Its input is a `11 × 256 × 256` patch; its output is a set of 15 class-score maps at full image resolution.
+
+**Training protocol:** 694 train / 328 validation / 359 test patches; seed 42; 35 maximum epochs; batch size 4; 16 base channels; AdamW (`3e-4`); training-only per-band normalization; geometric flips/rotations; class-frequency-weighted and annotation-confidence-weighted masked cross-entropy; debris-positive patch sampling. Unlabeled mask value `0` is excluded from loss and all reported pixel metrics. The best model was selected by **pooled validation Marine Debris F1**, at **epoch 33**.
+
+**Execution:** NVIDIA GeForce **RTX 5070 Laptop GPU**; GPU forward and official split checks passed with the recorded PyTorch/CUDA installation. Checkpoint is saved locally at `models/unet_best.pt` and should not be committed as an ordinary source file.
+
+### Official split performance compared with the archived RF
+
+| Model / split | Debris F1 ↑ | Precision ↑ | Recall ↑ | IoU ↑ | TP | FP ↓ | FN ↓ |
+|:--|--:|--:|--:|--:|--:|--:|--:|
+| RF 19 features — validation | **0.8157** | 0.7475 | **0.8977** | **0.6888** | — | — | — |
+| U-Net 11 bands — validation | 0.8009 | **0.7577** | 0.8493 | 0.6679 | 913 | 292 | 162 |
+| RF 19 features — **test** | **0.6779** | **0.5261** | **0.9528** | **0.5127** | 363 | **327** | **18** |
+| U-Net 11 bands — **test** | 0.3851 | 0.2510 | 0.8268 | 0.2385 | 315 | 940 | 66 |
+
+On the official test, U-Net trails the archived RF by **29.28 F1 percentage points** and yields **613 more FP** and **48 more FN**. This is an observed model comparison, **not** proof that spatial modeling is intrinsically worse: the two model families use different feature sets and training objectives.
+
+<p align="center">
+<img src="assets/figures/unet/loss_and_validation_f1.png" width="88%" alt="U-Net training loss and validation Marine Debris F1 across epochs">
+<img src="assets/figures/unet/test_confusion_normalized.png" width="88%" alt="Normalized 15-class U-Net test confusion matrix">
+</p>
+
+### What the test error analysis revealed
+
+- **940** test false-positive debris predictions: **378 Clouds**, **177 Waves**, **88 Ship**, **77 Wakes**, **56 Sparse Sargassum**, **56 Foam**, and **108 other**. Clouds plus Waves account for **59.0%** of these false positives.
+- Patch `S2_3-11-16_16PDC_7.tif` contains **no labeled debris** yet generates **276 test FP**. It is an important diagnostic example, but the original visualization sample did not include it.
+- In contrast, a *previously examined validation patch*, `S2_11-6-18_16PCC_26.tif`, had **112 RF FP** from sediment-laden water and **0 U-Net FP**. This improvement is **local to that example** and does not establish better generalization.
+
+<p align="center">
+<img src="assets/figures/unet/test_S2_3-11-16_16PDC_4_comparison.png" width="94%" alt="U-Net test patch with satellite imagery, annotated truth, prediction and localized errors">
+</p>
+
+The v0.4 U-Net test **macro F1 across present classes** is **0.5077**, compared with approximately **0.5002** in the archived RF report. This does **not** contradict the RF's higher *Marine Debris* F1, which is the primary objective. The official test has now been inspected: further tuning must use training/validation only, and independent evidence is needed for a final generalization claim. See [U-Net protocol](docs/unet_segmentation.md) and `results/unet/`.
+
+## Controlled U-Net Training Ablations (v0.5)
+
+After v0.4, we isolated **three training choices** rather than immediately increasing model capacity. Importantly, v0.4 **already used class weights, debris-positive patch oversampling, and geometric augmentation**. Four fresh 11-band/15-class U-Net training runs used the **same official Train/Validation split and seed 42**:
+
+1. `v04_replay` — replay the v0.4 training recipe (reference).
+2. `no_class_weights` — turn off class-frequency loss weights, retaining label-confidence weights.
+3. `no_debris_oversampling` — sample patches uniformly rather than preferentially sampling debris-containing training patches.
+4. `extra_spectral_jitter` — add small training-only reflectance gain/noise perturbations to the reference recipe.
+
+The best checkpoint for each run was chosen from **official validation only**. Each is an independent fitted model. **The official Test was not opened or scored for v0.5.** In the artifacts supplied so far, training histories and best-validation confusion matrices are available; complete per-patch results from script 19 were not included.
+
+### v0.5 results: 213,102 labeled validation pixels
+
+| Training configuration | Best epoch | Debris F1 ↑ | Precision ↑ | Recall ↑ | IoU ↑ | TP | FP ↓ | FN ↓ |
+|:--|--:|--:|--:|--:|--:|--:|--:|--:|
+| **`v04_replay`** | 33 | **0.8286** | 0.8123 | 0.8456 | **0.7074** | 909 | 210 | 166 |
+| `no_class_weights` | 22 | 0.8203 | 0.7791 | **0.8660** | 0.6953 | **931** | 264 | **144** |
+| `no_debris_oversampling` | 22 | 0.8224 | **0.8330** | 0.8121 | 0.6984 | 873 | **175** | 202 |
+| `extra_spectral_jitter` | 4 | 0.6462 | 0.5715 | 0.7433 | 0.4773 | 799 | 599 | 276 |
+
+**No single-change ablation improved overall validation Marine Debris F1 over the matched reference.** Removing oversampling reduces false positives by **35** and improves precision by **2.07 percentage points**, but increases false negatives by **36**. Removing class-frequency weights increases recall by **2.05 percentage points**, but raises FP by **54**. Additional spectral jitter reduces F1 by **18.24 percentage points** under the tested settings; it should not be generalized to all spectral augmentation schemes.
+
+<p align="center">
+<img src="assets/figures/unet_v05/v04_replay_learning_curves.png" width="85%" alt="U-Net v0.5 reference training and validation learning curves">
+<img src="assets/figures/unet_v05/extra_spectral_jitter_learning_curves.png" width="85%" alt="U-Net v0.5 learning curves under additional spectral jitter">
+</p>
+
+### Cloud/wave confusion on **validation**, by direction
+
+| Configuration | Clouds → Debris (FP) | Waves → Debris (FP) | Debris → Clouds (FN) | Debris → Waves (FN) |
+|:--|--:|--:|--:|--:|
+| `v04_replay` | **0** | 2 | **10** | 12 |
+| `no_class_weights` | 2 | 2 | 35 | 3 |
+| `no_debris_oversampling` | 16 | **0** | 12 | **2** |
+| `extra_spectral_jitter` | 21 | 3 | 33 | 7 |
+
+The interventions **do not consistently improve both error directions**. For instance, removing oversampling reduces the number of debris pixels predicted as Waves (12 → 2) but increases Clouds predicted as debris (0 → 16). These **v0.5 validation** counts must **not** be directly compared with **v0.4 test** cloud/wave counts.
+
+### Does v0.5 beat the RF baseline?
+
+The best v0.5 U-Net has **0.8286 validation F1**, **1.29 percentage points higher** than the archived 19-feature RF validation F1 (**0.8157**). However, this is **one seed**, the RF and U-Net are not training-condition-matched, and **there is no v0.5 test or group-disjoint score**. Moreover, the best variant is a **replay of the old recipe**, not evidence that a new training change improved the model.
+
+**Current research decision:** retain `v04_replay` as the best *validation-F1* v0.5 checkpoint. The `no_debris_oversampling` alternative trades lower recall for fewer alarms. Neither is established as better than RF on independent scenes or new geography. See [v0.5 experiment protocol](docs/unet_v05_controlled_ablation.md) and `results/unet_v05/`.
+
+## Cross-Experiment Synthesis
+
+The completed experiments support the following bounded conclusions:
+
+- **Spectral indices help the classical baseline on official validation**, but class-specific trade-offs and training-seed sensitivity matter.
+- **RF performance on held-out Tile IDs is highly heterogeneous**. A sediment-heavy acquisition within Tile `16PDC` dominates the false-positive burden in the grouped Train-only study.
+- **U-Net can eliminate a difficult local sediment false alarm**, but the completed v0.4 U-Net has substantially lower official-test debris F1 than the archived RF and is especially vulnerable to cloud/wave confusions on that split.
+- **The controlled v0.5 changes do not improve overall validation F1** beyond the replayed reference, and the highest v0.5 validation score is not evidence of better unseen-area performance.
+
+The next research milestone is **evaluation on independent geographically disjoint scenes** and, subject to a matched protocol, **remote-sensing pretrained encoders / foundation models**. These are future experiments, **not results reported by this README**.
+
 ## Dataset
 
-[MARIDA](https://zenodo.org/records/5151941) contains **1,381** Sentinel-2 multispectral patches (**256 × 256** pixels each), sparse/weak pixel-level annotations covering **15 marine classes**, annotation-confidence masks, GIS metadata, and official train/validation/test split manifests.
+The [MARIDA benchmark](https://zenodo.org/records/5151941) contains **1,381 Sentinel-2 image patches (256 × 256 pixels)**, **11 spectral bands**, masks with sparse/weak pixel-level annotations for **15 marine classes**, confidence labels, GIS resources, and official split manifests.
 
-Download the official dataset and prepare the annotated-pixel HDF5 file (`dataset.h5`) and GeoTIFF images locally. The expected layout is:
+The annotated-pixel HDF5 export powers the classical RF experiments. The **U-Net reads original multispectral GeoTIFF patches and class/confidence masks**, with training/validation/test identities taken from the official split lists. Missing annotation (`0`) is **excluded from both supervised loss and evaluation**; it is never equated to an ocean-background class.
 
 ```text
 baseline/data/
@@ -352,51 +491,59 @@ baseline/data/
 │       └── S2_<date>_<tile>_<index>_conf.tif
 ├── shapefiles/
 └── splits/
-    └── val_X.txt
+    ├── train_X.txt
+    ├── val_X.txt
+    └── test_X.txt
 ```
 
-Training and full-split evaluation read HDF5. Patch visualization and error localization read the **original GeoTIFFs, class masks, and official validation manifest**. The verification script reads both sources. No raw MARIDA data or fitted model weights are distributed with this repository.
-
-For annotation conventions and preprocessing assumptions, see [Dataset and protocol](docs/dataset_and_protocol.md) and the [MARIDA project](https://marine-debris.github.io/).
+The actual split totals checked by the v0.4 data script were **694 train**, **328 validation**, and **359 test** patches. The original MARIDA data and trained weights are **not distributed** in this repository; obtain data from [Zenodo](https://zenodo.org/records/5151941). The HDF5–GeoTIFF audit above checks selected spectral signatures, **not independent pixel-coordinate/georeferencing agreement**. See [Dataset/protocol](docs/dataset_and_protocol.md).
 
 ## Reproduction
 
-**Recommended environment:** Python 3.11 in PyCharm. Configure the project's Python interpreter and install dependencies from [`requirements.txt`](requirements.txt). In particular, Pandas HDF5 access requires **PyTables (`tables`)**, and patch visualization requires **tifffile**. The scripts use **PyCharm Run**, with no command-line arguments and no custom object-oriented architecture.
+**Working setup:** Windows / PyCharm, Python 3.11 in a Conda environment. The v0.4 GPU diagnostic succeeded on an **NVIDIA GeForce RTX 5070 Laptop GPU** with PyTorch `2.12.0.dev20260408+cu128`, CUDA 12.8, and compute capability `sm_120`. This is a record of the tested environment, **not a recommendation to pin a nightly version**. Install a current compatible PyTorch/CUDA build from [PyTorch's official installer](https://pytorch.org/get-started/locally/) for your GPU and operating system.
 
-### Workflow
+The Python scripts are designed for **PyCharm → Run**, without command-line arguments. Install the packages listed in [`requirements.txt`](requirements.txt); HDF5/Pandas needs `tables` (PyTables), and image input/plots need `tifffile`, `numpy`, `pandas`, and `matplotlib`. The U-Net stages additionally require compatible `torch`.
 
-| Step | Script | Purpose | Main outputs |
+### Workflow by stage
+
+| # | Script | Purpose | Main outputs |
 |:--|:--|:--|:--|
-| 1 | [`01_inspect_dataset.py`](baseline/01_inspect_dataset.py) | Inspect train/validation/test tables and labeled-pixel balance | Dataset summaries and class plots |
-| 2 | [`02_train_random_forest.py`](baseline/02_train_random_forest.py) | Sample training pixels and fit two RF baselines | Local `models/*.joblib`, training tables |
-| 3 | [`03_evaluate_models.py`](baseline/03_evaluate_models.py) | Select on validation and evaluate the winner on test | F1/IoU, per-class reports, confusion matrices |
-| 4 | [`04_analyze_features.py`](baseline/04_analyze_features.py) | Measure feature dependence on a validation sample | Feature ranking CSV and figure |
-| 5 | [`05_analyze_test_errors.py`](baseline/05_analyze_test_errors.py) | Summarize errors from the recorded test predictions | FP/FN charts and tables |
-| 6 | [`06_visualize_satellite_patch.py`](baseline/06_visualize_satellite_patch.py) | Inspect original satellite imagery and masks | Patch visualization |
-| 7 | [`07_visual_error_analysis.py`](baseline/07_visual_error_analysis.py) | Localize prediction errors in validation patches | Patch-level CSVs and five-view images |
-| 8 | [`08_verify_hdf_geotiff.py`](baseline/08_verify_hdf_geotiff.py) | Check spectral/label consistency between HDF5 and GeoTIFF | Match-rate tables and difference plot |
-| 9 | [`09_feature_ablation.py`](baseline/09_feature_ablation.py) | Retrain six feature sets under the same seed-42 training sample and evaluate full validation | `results/ablation/validation_comparison.csv`, model files |
-| 10 | [`10_compare_ablation_patches.py`](baseline/10_compare_ablation_patches.py) | Compare the six models on the known sediment-error patch | `results/ablation/known_validation_patch_comparison.csv` |
-| 11 | [`11_multi_seed_robustness.py`](baseline/11_multi_seed_robustness.py) | Repeat six models across five seeds; record patch/scene/tile confusion counts | `results/robustness/per_seed_validation.csv`, group tables |
-| 12 | [`12_analyze_scene_errors.py`](baseline/12_analyze_scene_errors.py) | Analyze seed stability, group-level trade-offs, and train/validation metadata overlap | Summary CSVs, descriptive bootstrap, report and plots |
+| 01 | [`01_inspect_dataset.py`](baseline/01_inspect_dataset.py) | Inspect HDF5 splits/class coverage | Dataset summaries |
+| 02 | [`02_train_random_forest.py`](baseline/02_train_random_forest.py) | Train two initial RFs | Local `.joblib` files |
+| 03 | [`03_evaluate_models.py`](baseline/03_evaluate_models.py) | Validation model selection, archived test evaluation | Confusion/metrics CSVs |
+| 04 | [`04_analyze_features.py`](baseline/04_analyze_features.py) | Permutation feature dependence | Feature chart |
+| 05 | [`05_analyze_test_errors.py`](baseline/05_analyze_test_errors.py) | Historical RF test error breakdown | FP/FN figures |
+| 06 | [`06_visualize_satellite_patch.py`](baseline/06_visualize_satellite_patch.py) | Inspect a multispectral patch | RGB/mask visualization |
+| 07 | [`07_visual_error_analysis.py`](baseline/07_visual_error_analysis.py) | Inspect 60 validation patches with RF | `results/visual_analysis/` |
+| 08 | [`08_verify_hdf_geotiff.py`](baseline/08_verify_hdf_geotiff.py) | Compare HDF5 and GeoTIFF signatures | `results/data_consistency/` |
+| 09 | [`09_feature_ablation.py`](baseline/09_feature_ablation.py) | Retrain six RF feature sets | `results/ablation/` |
+| 10 | [`10_compare_ablation_patches.py`](baseline/10_compare_ablation_patches.py) | Compare RF on a sediment-heavy patch | Known-patch error table |
+| 11 | [`11_multi_seed_robustness.py`](baseline/11_multi_seed_robustness.py) | Repeat six RFs over five seeds | `results/robustness/` |
+| 12 | [`12_analyze_scene_errors.py`](baseline/12_analyze_scene_errors.py) | Scene-level and paired-seed error analysis | Robustness findings/charts |
+| 13 | [`13_audit_geographic_tiles.py`](baseline/13_audit_geographic_tiles.py) | Audit class support by geographic Tile ID | `results/geographic_holdout/tile_summary.csv` |
+| 14 | [`14_geographic_holdout.py`](baseline/14_geographic_holdout.py) | Leave-one-Tile-out RF evaluation on official Train | Holdout folds/pooled scores |
+| 15 | [`15_check_gpu_and_data.py`](baseline/15_check_gpu_and_data.py) | Verify CUDA, GeoTIFF bands/masks and official splits | GPU/data diagnostic log |
+| 16 | [`16_train_unet.py`](baseline/16_train_unet.py) | Train v0.4 U-Net, save best validation checkpoint | `models/unet_best.pt`, training curves |
+| 17 | [`17_evaluate_unet.py`](baseline/17_evaluate_unet.py) | Evaluate completed v0.4 U-Net | `results/unet/`, prediction maps |
+| 18 | [`18_train_unet_v05.py`](baseline/18_train_unet_v05.py) | Train four controlled U-Net variants | `results/unet_v05/`, checkpoints |
+| 19 | [`19_analyze_unet_v05.py`](baseline/19_analyze_unet_v05.py) | Compare v0.5 variants on **validation only** | Patch-level diagnostics/figures when executed |
 
-Scripts **1–4** establish the archived classical benchmark; **7–8** provide v0.2 visual diagnostics and data verification; **9–10** run the six-model v0.3 ablation; and **11–12** repeat and analyze those comparisons across five seeds (v0.3.1). Script 10 requires models saved by script 09; script 12 requires outputs from script 11. For the recorded v0.2 visual analysis, the images came from the existing trained `spectral_plus_indices.joblib`; scripts 07–08 do **not** retrain the model.
+**Execution order:** script 14 follows the Tile audit (13); script 16 follows the GPU diagnostic (15); script 17 follows a successful v0.4 training run (16). **For v0.5 run 18 first, then 19**; the earlier stages do not need to be rerun just to execute these files. Scripts 18–19 do not read official Test. Models used in v0.5 are saved under `models/unet_v05/` and do not overwrite `models/unet_best.pt` from v0.4.
 
-Set baseline paths and model parameters in [`baseline/settings.py`](baseline/settings.py). For the archived baseline run use `RANDOM_SEED = 42`, `TRAIN_SAMPLES_PER_CLASS = 2000`, and `NUMBER_OF_TREES = 100`. Script 07 additionally needs local GeoTIFFs and the validation split list; script 08 needs both HDF5 and selected GeoTIFFs. The ablation and robustness scripts expose their experiments/seeds in their source files and record their configurations in `results/ablation/run_config.json` and `results/robustness/run_config.json`.
+### Outputs and experiment isolation
 
-**Outputs and repository hygiene:**
+| Location | Content |
+|:--|:--|
+| `results/benchmark/` | Archived v0.1 RF metrics and scores |
+| `results/visual_analysis/`, `results/data_consistency/` | v0.2 errors and input verification |
+| `results/ablation/`, `results/robustness/` | v0.3 and v0.3.1 RF experiments |
+| `results/geographic_holdout/` | v0.3.2 Tile audit, grouped folds and confusion counts |
+| `results/unet/` | v0.4 training, validation/test diagnostics and comparisons |
+| `results/unet_v05/` | v0.5 controlled runs and **validation-only** evaluation |
+| `assets/figures/<stage>/` | Figures suitable for Markdown/GitHub |
+| `models/`, `baseline/data/`, `results/runs/latest/` | Local training artifacts and raw data; normally excluded from Git |
 
-- `results/benchmark/` holds archived results from the completed baseline experiment.
-- `results/visual_analysis/` holds patch-level error summaries and diagnostic CSVs.
-- `results/data_consistency/` holds spectral and label consistency tables.
-- `results/ablation/` holds v0.3 single-seed comparisons and the difficult-patch diagnostic.
-- `results/robustness/` holds v0.3.1 multi-seed scores, patch/acquisition/Tile summaries, overlap checks, and the descriptive resampling analysis.
-- `assets/figures/ablation/` and `assets/figures/robustness/` hold the new figures used above.
-- `assets/figures/` contains selected figures referenced by this README.
-- `results/runs/latest/` contains intermediate outputs from new local runs; `models/` contains locally saved fitted models. Both are excluded from Git.
-- `baseline/data/` is intentionally excluded from Git; refer to the [official MARIDA download](https://zenodo.org/records/5151941) to obtain the original data.
-
-Dependencies may vary with environment and the original environment was not recorded as a complete lockfile. Reproducing precisely the published numbers additionally requires consistent data versions, training sampling, labels, and scoring choices.
+The numerical results in this README are **recorded outputs from separate runs**, not a unified lockfile-based re-execution. Save `run_config.json`, training histories, confusion matrices and dataset provenance alongside the relevant experiment. Inspect `.gitignore` before committing: intentional figures and selected small CSV summaries may be tracked, while raw imagery, `.h5` files, and model weights should remain local.
 
 ## Repository Layout
 
@@ -409,80 +556,78 @@ MARIDA-SpectralBench/
 ├── assets/
 │   └── figures/
 │       ├── benchmark_scores.png
-│       ├── feature_importance.png
 │       ├── visual_errors/
-│       │   ├── S2_11-6-18_16PCC_26_visual_errors.png
-│       │   ├── S2_18-9-20_16PCC_39_visual_errors.png
-│       │   └── ...
 │       ├── data_consistency/
-│       │   └── band_differences.png
-│       ├── ablation/                      # New six-model comparison charts
-│       │   ├── validation_f1_by_feature_set.png
-│       │   └── sediment_false_positives.png
-│       └── robustness/                    # Five-seed and scene charts
-│           ├── validation_f1_mean_sd.png
-│           ├── validation_f1_across_seeds.png
-│           ├── top_error_scenes.png
-│           └── scene_ndwi_sediment_tradeoff.png
+│       ├── ablation/
+│       ├── robustness/
+│       ├── geographic_holdout/       # Held-out Tile F1 / FP charts
+│       ├── unet/                     # Loss, confusion matrices, patch overlays
+│       └── unet_v05/                 # Controlled U-Net learning curves
 ├── baseline/
 │   ├── settings.py
 │   ├── spectral_features.py
+│   ├── unet_core.py               # Shared U-Net architecture and GeoTIFF loader
 │   ├── 01_inspect_dataset.py
-│   ├── 02_train_random_forest.py
-│   ├── 03_evaluate_models.py
-│   ├── 04_analyze_features.py
-│   ├── 05_analyze_test_errors.py
-│   ├── 06_visualize_satellite_patch.py
-│   ├── 07_visual_error_analysis.py
-│   ├── 08_verify_hdf_geotiff.py
-│   ├── 09_feature_ablation.py
-│   ├── 10_compare_ablation_patches.py
-│   ├── 11_multi_seed_robustness.py
-│   ├── 12_analyze_scene_errors.py
-│   └── data/                    # Local only; excluded from Git
+│   ├── ...
+│   ├── 14_geographic_holdout.py
+│   ├── 15_check_gpu_and_data.py
+│   ├── 16_train_unet.py
+│   ├── 17_evaluate_unet.py
+│   ├── 18_train_unet_v05.py
+│   ├── 19_analyze_unet_v05.py
+│   └── data/                      # Local-only official MARIDA input
 ├── docs/
 │   ├── dataset_and_protocol.md
 │   ├── experiment_notes.md
 │   ├── visual_error_analysis.md
 │   ├── data_consistency.md
 │   ├── feature_ablation.md
-│   └── robustness_and_scene_analysis.md
-├── models/                      # Local only; excluded from Git
+│   ├── robustness_and_scene_analysis.md
+│   ├── geographic_holdout.md
+│   ├── unet_segmentation.md
+│   └── unet_v05_controlled_ablation.md
+├── models/                         # Local-only .joblib / .pt checkpoints
 ├── results/
-│   ├── benchmark/               # Archived baseline CSV results
-│   ├── visual_analysis/         # Diagnostic subset CSV results
-│   ├── data_consistency/        # Spectral verification CSV results
-│   ├── ablation/                # Six-model validation CSVs
-│   ├── robustness/              # Seed-level and scene-level diagnostics
-│   └── runs/                    # Local interim runs; excluded from Git
+│   ├── benchmark/
+│   ├── visual_analysis/
+│   ├── data_consistency/
+│   ├── ablation/
+│   ├── robustness/
+│   ├── geographic_holdout/
+│   ├── unet/
+│   ├── unet_v05/
+│   └── runs/                      # Local interim run outputs
 └── tests/
     └── check_features.py
 ```
 
+The tree is the **intended local project layout**. Only paths you actually add and commit will appear on GitHub. In particular, generated images referenced above must be committed under the same relative paths for the README previews to render.
+
 ## Limitations and Next Steps
 
-The completed experiments establish a **reproducible classical-machine-learning benchmark, controlled feature ablations, and preliminary robustness/error analyses**—not a new state-of-the-art dense segmentation system.
+The current results constitute a **classical baseline, documented failure analyses, a grouped RF stress test, and two generations of U-Net experiments**. They do **not** establish a state-of-the-art marine debris detector or reliable transfer to arbitrary unseen coastal waters.
 
-- **Sparse and weak annotations:** Only labeled pixels are scored. Gray/unlabeled image areas are not negatives, and no whole-scene segmentation metric is claimed.
-- **Per-pixel inputs, no learned spatial context:** Random Forest uses spectral inputs and engineered indices, not neighboring-pixel texture or object shape.
-- **Training prior shift:** Per-class subsampling and confidence weighting alter the effective training distribution and may affect calibration.
-- **Differences across experiment snapshots:** The archived v0.1 seed-42 validation F1 (**0.8157**) and the separately retrained v0.3 seed-42 F1 (**0.8187**) are not numerically identical. Their original predictions/sampling/implementation details were not shown to be identical, so retain them as distinct experiments rather than silently merging results.
-- **Only five training seeds:** Repeated seeds measure a limited component of training variability on a *fixed* validation set; they do not quantify uncertainty over unseen geography, seasons, sensors, or annotation processes.
-- **Scene-concentrated errors and small denominators:** Large fractions of false alarms/misses are concentrated in a few acquisition groups; group-level rates depend on annotation coverage.
-- **No verified geographic holdout:** Exact Patch and Date+Tile IDs are disjoint in the metadata check, but **five Tile IDs overlap** between train and validation. This neither proves leakage nor justifies a claim of spatially independent generalization.
-- **Descriptive bootstrap only:** Resampling existing Date+Tile groups is a sensitivity analysis, not a definitive out-of-domain confidence interval.
-- **Partial HDF5–GeoTIFF verification:** The spectral/label check passed on 411 sampled records, but the one-to-one pixel-coordinate mapping and full archive have not been independently verified.
-- **No causal mechanism identified:** Permutation importance and ablation results describe predictive dependence under the chosen training conditions; they do not establish physical causality.
-- **Held-out test discipline:** The historical v0.1 test set has already been inspected. Subsequent selection and hypothesis development are based on train/validation only. A truly new independent evaluation is needed for strong final claims after further model development.
+### Interpretation boundaries
 
-### Planned research (not yet implemented)
+- **Sparse labels:** Evaluation is limited to annotated class-1–15 pixels; unlabeled areas are never counted as true negatives. Reported rates are **not full-image debris-detection rates**.
+- **Not a controlled architecture-only comparison:** RF with 19 engineered/spectral features and U-Net with 11 raw bands differ in training procedure, sampling, loss, and model family. Their scores describe the tested systems, not a clean causal effect of convolution.
+- **Official Test has been seen:** v0.1 RF and v0.4 U-Net Test results are historical reports. Model redesign after inspecting them reduces the independence of that split for later studies. **No v0.5 Test result is claimed.** A new independent or properly pre-registered final evaluation is required for confirmatory conclusions.
+- **Geographic independence is approximate:** 5 of the 7 official-validation Tile IDs overlap with Train. The grouped v0.3.2 experiment prevents identical Tile IDs across fit/evaluation folds, but exact footprint nonoverlap has not been audited.
+- **Heterogeneous class support:** Some Tiles have almost no annotated debris; pooled and Tile-macro metrics answer different questions and can favor different models.
+- **Small robustness samples:** The RF ablation uses five seeds, v0.3.2 uses one seed, and the U-Net experiments reported here use one seed. Their variations are not independent-scene uncertainty estimates.
+- **Scene-specific errors:** Large false-positive concentrations in `16PDC`/sediment scenes and v0.4 Test cloud/wave confusions cannot be explained causally from confusion tables alone.
+- **Data verification scope:** HDF5–GeoTIFF spectra and labels agreed for 411 sampled records in 3 patches, but exact pixel coordinate and entire-archive agreement remain unverified.
+- **Model artifacts:** Checkpoint files and raw dataset files are local and excluded from version control; a README alone cannot reproduce a run without those inputs and its configuration.
 
-1. **Group-disjoint validation / geographic holdout:** Design a carefully balanced evaluation with nonoverlapping geographic Tile or scene groups, sufficient annotated Marine Debris, and documented area/date coverage; keep the official test split untouched during new model selection.
-2. **Spatial segmentation baseline:** Compare a multispectral U-Net or another spatial model against the spectral RF under matched splits and evaluation definitions, while respecting missing annotations.
-3. **Robustness beyond training seeds:** Measure performance across independent areas/acquisition conditions and assess whether the observed sediment/ship/wake confusions persist.
-4. **Remote-sensing pretrained encoders and evidence retrieval:** Evaluate suitable foundation models or parameter-efficient adaptation and support explanations with traceable image/spectral evidence.
+### Next research milestones (not yet completed)
 
-Results from these steps will be reported separately from the completed **v0.1**, **v0.2**, **v0.3**, and **v0.3.1** experiments.
+1. **Complete the v0.5 validation diagnostics:** run script 19 where necessary and export per-patch error maps for the difficult validation scenes. Maintain strict separation from the previously inspected Test during model selection.
+2. **Independent geographic evaluation of a selected model:** create a documented spatially disjoint split or acquire independently labeled scenes, verify spatial footprints and class support, and compare the selected RF and U-Net on the *same* evaluation observations.
+3. **Remote-sensing pretrained encoders:** benchmark a suitable multispectral foundation-model encoder against the 11-band U-Net with comparable training budgets and documented initialization/preprocessing.
+4. **Repeatability and uncertainty:** train promising U-Net configurations across multiple seeds and report scene-/Tile-aware uncertainty, rather than treating neighboring pixels as independent samples.
+5. **Physically interpretable error studies:** examine difficult sediment/cloud/wave regions with coregistered spectra, labels, metadata, and calibration checks before making a mechanism claim.
+
+The project aims to produce **auditable research evidence**: a higher validation F1 alone is not an assertion of meaningful, independent generalization.
 
 ## References
 

@@ -1,0 +1,547 @@
+heldout_tile,experiment,true_class,false_positive_debris_pixels,true_class_support
+16PCC,full_19,Dense Sargassum,9,313
+16PCC,full_19,Sparse Sargassum,64,234
+16PCC,full_19,Natural Organic Material,10,28
+16PCC,full_19,Ship,33,1550
+16PCC,full_19,Clouds,508,33762
+16PCC,full_19,Marine Water,7,36779
+16PCC,full_19,Sediment-Laden Water,0,124786
+16PCC,full_19,Foam,11,213
+16PCC,full_19,Turbid Water,48,71471
+16PCC,full_19,Shallow Water,0,3166
+16PCC,full_19,Waves,93,1406
+16PCC,full_19,Cloud Shadows,0,1382
+16PCC,full_19,Wakes,19,3589
+16PCC,full_19,Mixed Water,12,98
+16PCC,minus_ndwi,Dense Sargassum,5,313
+16PCC,minus_ndwi,Sparse Sargassum,44,234
+16PCC,minus_ndwi,Natural Organic Material,10,28
+16PCC,minus_ndwi,Ship,46,1550
+16PCC,minus_ndwi,Clouds,601,33762
+16PCC,minus_ndwi,Marine Water,25,36779
+16PCC,minus_ndwi,Sediment-Laden Water,0,124786
+16PCC,minus_ndwi,Foam,22,213
+16PCC,minus_ndwi,Turbid Water,95,71471
+16PCC,minus_ndwi,Shallow Water,0,3166
+16PCC,minus_ndwi,Waves,178,1406
+16PCC,minus_ndwi,Cloud Shadows,0,1382
+16PCC,minus_ndwi,Wakes,43,3589
+16PCC,minus_ndwi,Mixed Water,11,98
+16PCC,bands_only,Dense Sargassum,0,313
+16PCC,bands_only,Sparse Sargassum,11,234
+16PCC,bands_only,Natural Organic Material,16,28
+16PCC,bands_only,Ship,65,1550
+16PCC,bands_only,Clouds,477,33762
+16PCC,bands_only,Marine Water,274,36779
+16PCC,bands_only,Sediment-Laden Water,0,124786
+16PCC,bands_only,Foam,26,213
+16PCC,bands_only,Turbid Water,37,71471
+16PCC,bands_only,Shallow Water,0,3166
+16PCC,bands_only,Waves,426,1406
+16PCC,bands_only,Cloud Shadows,0,1382
+16PCC,bands_only,Wakes,54,3589
+16PCC,bands_only,Mixed Water,8,98
+16PDC,full_19,Dense Sargassum,0,12
+16PDC,full_19,Sparse Sargassum,2,82
+16PDC,full_19,Natural Organic Material,3,57
+16PDC,full_19,Ship,3,49
+16PDC,full_19,Clouds,12,2797
+16PDC,full_19,Marine Water,0,5092
+16PDC,full_19,Sediment-Laden Water,5169,27958
+16PDC,full_19,Foam,0,235
+16PDC,full_19,Turbid Water,0,6310
+16PDC,full_19,Shallow Water,0,1605
+16PDC,full_19,Waves,0,0
+16PDC,full_19,Cloud Shadows,0,119
+16PDC,full_19,Wakes,2,124
+16PDC,full_19,Mixed Water,3,40
+16PDC,minus_ndwi,Dense Sargassum,0,12
+16PDC,minus_ndwi,Sparse Sargassum,1,82
+16PDC,minus_ndwi,Natural Organic Material,2,57
+16PDC,minus_ndwi,Ship,4,49
+16PDC,minus_ndwi,Clouds,13,2797
+16PDC,minus_ndwi,Marine Water,0,5092
+16PDC,minus_ndwi,Sediment-Laden Water,3166,27958
+16PDC,minus_ndwi,Foam,1,235
+16PDC,minus_ndwi,Turbid Water,0,6310
+16PDC,minus_ndwi,Shallow Water,0,1605
+16PDC,minus_ndwi,Waves,0,0
+16PDC,minus_ndwi,Cloud Shadows,0,119
+16PDC,minus_ndwi,Wakes,2,124
+16PDC,minus_ndwi,Mixed Water,3,40
+16PDC,bands_only,Dense Sargassum,0,12
+16PDC,bands_only,Sparse Sargassum,2,82
+16PDC,bands_only,Natural Organic Material,3,57
+16PDC,bands_only,Ship,7,49
+16PDC,bands_only,Clouds,21,2797
+16PDC,bands_only,Marine Water,0,5092
+16PDC,bands_only,Sediment-Laden Water,5849,27958
+16PDC,bands_only,Foam,16,235
+16PDC,bands_only,Turbid Water,0,6310
+16PDC,bands_only,Shallow Water,0,1605
+16PDC,bands_only,Waves,0,0
+16PDC,bands_only,Cloud Shadows,0,119
+16PDC,bands_only,Wakes,3,124
+16PDC,bands_only,Mixed Water,5,40
+16PEC,full_19,Dense Sargassum,0,184
+16PEC,full_19,Sparse Sargassum,0,499
+16PEC,full_19,Natural Organic Material,16,193
+16PEC,full_19,Ship,15,220
+16PEC,full_19,Clouds,0,8367
+16PEC,full_19,Marine Water,0,13575
+16PEC,full_19,Sediment-Laden Water,0,0
+16PEC,full_19,Foam,5,17
+16PEC,full_19,Turbid Water,0,4673
+16PEC,full_19,Shallow Water,2,3235
+16PEC,full_19,Waves,0,108
+16PEC,full_19,Cloud Shadows,0,1558
+16PEC,full_19,Wakes,10,357
+16PEC,full_19,Mixed Water,1,36
+16PEC,minus_ndwi,Dense Sargassum,0,184
+16PEC,minus_ndwi,Sparse Sargassum,0,499
+16PEC,minus_ndwi,Natural Organic Material,18,193
+16PEC,minus_ndwi,Ship,17,220
+16PEC,minus_ndwi,Clouds,0,8367
+16PEC,minus_ndwi,Marine Water,0,13575
+16PEC,minus_ndwi,Sediment-Laden Water,0,0
+16PEC,minus_ndwi,Foam,5,17
+16PEC,minus_ndwi,Turbid Water,0,4673
+16PEC,minus_ndwi,Shallow Water,4,3235
+16PEC,minus_ndwi,Waves,0,108
+16PEC,minus_ndwi,Cloud Shadows,0,1558
+16PEC,minus_ndwi,Wakes,8,357
+16PEC,minus_ndwi,Mixed Water,1,36
+16PEC,bands_only,Dense Sargassum,0,184
+16PEC,bands_only,Sparse Sargassum,2,499
+16PEC,bands_only,Natural Organic Material,38,193
+16PEC,bands_only,Ship,26,220
+16PEC,bands_only,Clouds,0,8367
+16PEC,bands_only,Marine Water,0,13575
+16PEC,bands_only,Sediment-Laden Water,0,0
+16PEC,bands_only,Foam,7,17
+16PEC,bands_only,Turbid Water,0,4673
+16PEC,bands_only,Shallow Water,3,3235
+16PEC,bands_only,Waves,0,108
+16PEC,bands_only,Cloud Shadows,0,1558
+16PEC,bands_only,Wakes,10,357
+16PEC,bands_only,Mixed Water,1,36
+16QED,full_19,Dense Sargassum,0,357
+16QED,full_19,Sparse Sargassum,6,55
+16QED,full_19,Natural Organic Material,0,0
+16QED,full_19,Ship,0,65
+16QED,full_19,Clouds,2,514
+16QED,full_19,Marine Water,0,1377
+16QED,full_19,Sediment-Laden Water,0,0
+16QED,full_19,Foam,0,0
+16QED,full_19,Turbid Water,0,0
+16QED,full_19,Shallow Water,2,4803
+16QED,full_19,Waves,0,0
+16QED,full_19,Cloud Shadows,0,84
+16QED,full_19,Wakes,0,175
+16QED,full_19,Mixed Water,0,0
+16QED,minus_ndwi,Dense Sargassum,0,357
+16QED,minus_ndwi,Sparse Sargassum,4,55
+16QED,minus_ndwi,Natural Organic Material,0,0
+16QED,minus_ndwi,Ship,0,65
+16QED,minus_ndwi,Clouds,1,514
+16QED,minus_ndwi,Marine Water,0,1377
+16QED,minus_ndwi,Sediment-Laden Water,0,0
+16QED,minus_ndwi,Foam,0,0
+16QED,minus_ndwi,Turbid Water,0,0
+16QED,minus_ndwi,Shallow Water,2,4803
+16QED,minus_ndwi,Waves,0,0
+16QED,minus_ndwi,Cloud Shadows,0,84
+16QED,minus_ndwi,Wakes,0,175
+16QED,minus_ndwi,Mixed Water,0,0
+16QED,bands_only,Dense Sargassum,0,357
+16QED,bands_only,Sparse Sargassum,8,55
+16QED,bands_only,Natural Organic Material,0,0
+16QED,bands_only,Ship,0,65
+16QED,bands_only,Clouds,1,514
+16QED,bands_only,Marine Water,0,1377
+16QED,bands_only,Sediment-Laden Water,0,0
+16QED,bands_only,Foam,0,0
+16QED,bands_only,Turbid Water,0,0
+16QED,bands_only,Shallow Water,0,4803
+16QED,bands_only,Waves,0,0
+16QED,bands_only,Cloud Shadows,0,84
+16QED,bands_only,Wakes,0,175
+16QED,bands_only,Mixed Water,0,0
+18QWF,full_19,Dense Sargassum,0,0
+18QWF,full_19,Sparse Sargassum,0,0
+18QWF,full_19,Natural Organic Material,0,0
+18QWF,full_19,Ship,0,0
+18QWF,full_19,Clouds,0,0
+18QWF,full_19,Marine Water,2,324
+18QWF,full_19,Sediment-Laden Water,0,0
+18QWF,full_19,Foam,0,0
+18QWF,full_19,Turbid Water,0,0
+18QWF,full_19,Shallow Water,0,0
+18QWF,full_19,Waves,70,1461
+18QWF,full_19,Cloud Shadows,0,0
+18QWF,full_19,Wakes,0,0
+18QWF,full_19,Mixed Water,0,0
+18QWF,minus_ndwi,Dense Sargassum,0,0
+18QWF,minus_ndwi,Sparse Sargassum,0,0
+18QWF,minus_ndwi,Natural Organic Material,0,0
+18QWF,minus_ndwi,Ship,0,0
+18QWF,minus_ndwi,Clouds,0,0
+18QWF,minus_ndwi,Marine Water,1,324
+18QWF,minus_ndwi,Sediment-Laden Water,0,0
+18QWF,minus_ndwi,Foam,0,0
+18QWF,minus_ndwi,Turbid Water,0,0
+18QWF,minus_ndwi,Shallow Water,0,0
+18QWF,minus_ndwi,Waves,65,1461
+18QWF,minus_ndwi,Cloud Shadows,0,0
+18QWF,minus_ndwi,Wakes,0,0
+18QWF,minus_ndwi,Mixed Water,0,0
+18QWF,bands_only,Dense Sargassum,0,0
+18QWF,bands_only,Sparse Sargassum,0,0
+18QWF,bands_only,Natural Organic Material,0,0
+18QWF,bands_only,Ship,0,0
+18QWF,bands_only,Clouds,0,0
+18QWF,bands_only,Marine Water,1,324
+18QWF,bands_only,Sediment-Laden Water,0,0
+18QWF,bands_only,Foam,0,0
+18QWF,bands_only,Turbid Water,0,0
+18QWF,bands_only,Shallow Water,0,0
+18QWF,bands_only,Waves,32,1461
+18QWF,bands_only,Cloud Shadows,0,0
+18QWF,bands_only,Wakes,0,0
+18QWF,bands_only,Mixed Water,0,0
+18QYF,full_19,Dense Sargassum,0,4
+18QYF,full_19,Sparse Sargassum,0,200
+18QYF,full_19,Natural Organic Material,7,114
+18QYF,full_19,Ship,13,345
+18QYF,full_19,Clouds,69,6723
+18QYF,full_19,Marine Water,0,876
+18QYF,full_19,Sediment-Laden Water,0,0
+18QYF,full_19,Foam,0,0
+18QYF,full_19,Turbid Water,0,0
+18QYF,full_19,Shallow Water,0,910
+18QYF,full_19,Waves,0,0
+18QYF,full_19,Cloud Shadows,0,0
+18QYF,full_19,Wakes,3,48
+18QYF,full_19,Mixed Water,4,36
+18QYF,minus_ndwi,Dense Sargassum,0,4
+18QYF,minus_ndwi,Sparse Sargassum,0,200
+18QYF,minus_ndwi,Natural Organic Material,10,114
+18QYF,minus_ndwi,Ship,13,345
+18QYF,minus_ndwi,Clouds,80,6723
+18QYF,minus_ndwi,Marine Water,0,876
+18QYF,minus_ndwi,Sediment-Laden Water,0,0
+18QYF,minus_ndwi,Foam,0,0
+18QYF,minus_ndwi,Turbid Water,0,0
+18QYF,minus_ndwi,Shallow Water,0,910
+18QYF,minus_ndwi,Waves,0,0
+18QYF,minus_ndwi,Cloud Shadows,0,0
+18QYF,minus_ndwi,Wakes,3,48
+18QYF,minus_ndwi,Mixed Water,4,36
+18QYF,bands_only,Dense Sargassum,0,4
+18QYF,bands_only,Sparse Sargassum,0,200
+18QYF,bands_only,Natural Organic Material,19,114
+18QYF,bands_only,Ship,9,345
+18QYF,bands_only,Clouds,49,6723
+18QYF,bands_only,Marine Water,0,876
+18QYF,bands_only,Sediment-Laden Water,0,0
+18QYF,bands_only,Foam,0,0
+18QYF,bands_only,Turbid Water,0,0
+18QYF,bands_only,Shallow Water,0,910
+18QYF,bands_only,Waves,0,0
+18QYF,bands_only,Cloud Shadows,0,0
+18QYF,bands_only,Wakes,3,48
+18QYF,bands_only,Mixed Water,1,36
+19QDA,full_19,Dense Sargassum,0,0
+19QDA,full_19,Sparse Sargassum,4,21
+19QDA,full_19,Natural Organic Material,2,3
+19QDA,full_19,Ship,5,11
+19QDA,full_19,Clouds,0,0
+19QDA,full_19,Marine Water,0,110
+19QDA,full_19,Sediment-Laden Water,0,0
+19QDA,full_19,Foam,0,0
+19QDA,full_19,Turbid Water,0,5
+19QDA,full_19,Shallow Water,0,40
+19QDA,full_19,Waves,0,0
+19QDA,full_19,Cloud Shadows,0,0
+19QDA,full_19,Wakes,0,0
+19QDA,full_19,Mixed Water,0,0
+19QDA,minus_ndwi,Dense Sargassum,0,0
+19QDA,minus_ndwi,Sparse Sargassum,4,21
+19QDA,minus_ndwi,Natural Organic Material,0,3
+19QDA,minus_ndwi,Ship,5,11
+19QDA,minus_ndwi,Clouds,0,0
+19QDA,minus_ndwi,Marine Water,0,110
+19QDA,minus_ndwi,Sediment-Laden Water,0,0
+19QDA,minus_ndwi,Foam,0,0
+19QDA,minus_ndwi,Turbid Water,0,5
+19QDA,minus_ndwi,Shallow Water,0,40
+19QDA,minus_ndwi,Waves,0,0
+19QDA,minus_ndwi,Cloud Shadows,0,0
+19QDA,minus_ndwi,Wakes,0,0
+19QDA,minus_ndwi,Mixed Water,0,0
+19QDA,bands_only,Dense Sargassum,0,0
+19QDA,bands_only,Sparse Sargassum,3,21
+19QDA,bands_only,Natural Organic Material,3,3
+19QDA,bands_only,Ship,5,11
+19QDA,bands_only,Clouds,0,0
+19QDA,bands_only,Marine Water,0,110
+19QDA,bands_only,Sediment-Laden Water,0,0
+19QDA,bands_only,Foam,0,0
+19QDA,bands_only,Turbid Water,0,5
+19QDA,bands_only,Shallow Water,0,40
+19QDA,bands_only,Waves,0,0
+19QDA,bands_only,Cloud Shadows,0,0
+19QDA,bands_only,Wakes,0,0
+19QDA,bands_only,Mixed Water,0,0
+30VWH,full_19,Dense Sargassum,0,0
+30VWH,full_19,Sparse Sargassum,0,0
+30VWH,full_19,Natural Organic Material,0,0
+30VWH,full_19,Ship,4,36
+30VWH,full_19,Clouds,0,3505
+30VWH,full_19,Marine Water,0,24393
+30VWH,full_19,Sediment-Laden Water,0,0
+30VWH,full_19,Foam,0,0
+30VWH,full_19,Turbid Water,0,0
+30VWH,full_19,Shallow Water,0,0
+30VWH,full_19,Waves,0,0
+30VWH,full_19,Cloud Shadows,0,1975
+30VWH,full_19,Wakes,0,0
+30VWH,full_19,Mixed Water,0,0
+30VWH,minus_ndwi,Dense Sargassum,0,0
+30VWH,minus_ndwi,Sparse Sargassum,0,0
+30VWH,minus_ndwi,Natural Organic Material,0,0
+30VWH,minus_ndwi,Ship,3,36
+30VWH,minus_ndwi,Clouds,0,3505
+30VWH,minus_ndwi,Marine Water,0,24393
+30VWH,minus_ndwi,Sediment-Laden Water,0,0
+30VWH,minus_ndwi,Foam,0,0
+30VWH,minus_ndwi,Turbid Water,0,0
+30VWH,minus_ndwi,Shallow Water,0,0
+30VWH,minus_ndwi,Waves,0,0
+30VWH,minus_ndwi,Cloud Shadows,0,1975
+30VWH,minus_ndwi,Wakes,0,0
+30VWH,minus_ndwi,Mixed Water,0,0
+30VWH,bands_only,Dense Sargassum,0,0
+30VWH,bands_only,Sparse Sargassum,0,0
+30VWH,bands_only,Natural Organic Material,0,0
+30VWH,bands_only,Ship,2,36
+30VWH,bands_only,Clouds,0,3505
+30VWH,bands_only,Marine Water,0,24393
+30VWH,bands_only,Sediment-Laden Water,0,0
+30VWH,bands_only,Foam,0,0
+30VWH,bands_only,Turbid Water,0,0
+30VWH,bands_only,Shallow Water,0,0
+30VWH,bands_only,Waves,0,0
+30VWH,bands_only,Cloud Shadows,0,1975
+30VWH,bands_only,Wakes,0,0
+30VWH,bands_only,Mixed Water,0,0
+36JUN,full_19,Dense Sargassum,0,0
+36JUN,full_19,Sparse Sargassum,0,0
+36JUN,full_19,Natural Organic Material,0,0
+36JUN,full_19,Ship,10,625
+36JUN,full_19,Clouds,0,3500
+36JUN,full_19,Marine Water,0,600
+36JUN,full_19,Sediment-Laden Water,0,0
+36JUN,full_19,Foam,0,0
+36JUN,full_19,Turbid Water,0,300
+36JUN,full_19,Shallow Water,0,0
+36JUN,full_19,Waves,0,0
+36JUN,full_19,Cloud Shadows,0,0
+36JUN,full_19,Wakes,0,18
+36JUN,full_19,Mixed Water,0,0
+36JUN,minus_ndwi,Dense Sargassum,0,0
+36JUN,minus_ndwi,Sparse Sargassum,0,0
+36JUN,minus_ndwi,Natural Organic Material,0,0
+36JUN,minus_ndwi,Ship,10,625
+36JUN,minus_ndwi,Clouds,0,3500
+36JUN,minus_ndwi,Marine Water,1,600
+36JUN,minus_ndwi,Sediment-Laden Water,0,0
+36JUN,minus_ndwi,Foam,0,0
+36JUN,minus_ndwi,Turbid Water,0,300
+36JUN,minus_ndwi,Shallow Water,0,0
+36JUN,minus_ndwi,Waves,0,0
+36JUN,minus_ndwi,Cloud Shadows,0,0
+36JUN,minus_ndwi,Wakes,0,18
+36JUN,minus_ndwi,Mixed Water,0,0
+36JUN,bands_only,Dense Sargassum,0,0
+36JUN,bands_only,Sparse Sargassum,0,0
+36JUN,bands_only,Natural Organic Material,0,0
+36JUN,bands_only,Ship,10,625
+36JUN,bands_only,Clouds,0,3500
+36JUN,bands_only,Marine Water,0,600
+36JUN,bands_only,Sediment-Laden Water,0,0
+36JUN,bands_only,Foam,0,0
+36JUN,bands_only,Turbid Water,0,300
+36JUN,bands_only,Shallow Water,0,0
+36JUN,bands_only,Waves,0,0
+36JUN,bands_only,Cloud Shadows,0,0
+36JUN,bands_only,Wakes,0,18
+36JUN,bands_only,Mixed Water,0,0
+48MXU,full_19,Dense Sargassum,0,0
+48MXU,full_19,Sparse Sargassum,0,0
+48MXU,full_19,Natural Organic Material,0,0
+48MXU,full_19,Ship,1,71
+48MXU,full_19,Clouds,484,5807
+48MXU,full_19,Marine Water,0,194
+48MXU,full_19,Sediment-Laden Water,0,0
+48MXU,full_19,Foam,0,0
+48MXU,full_19,Turbid Water,0,382
+48MXU,full_19,Shallow Water,0,45
+48MXU,full_19,Waves,0,0
+48MXU,full_19,Cloud Shadows,0,489
+48MXU,full_19,Wakes,0,15
+48MXU,full_19,Mixed Water,3,12
+48MXU,minus_ndwi,Dense Sargassum,0,0
+48MXU,minus_ndwi,Sparse Sargassum,0,0
+48MXU,minus_ndwi,Natural Organic Material,0,0
+48MXU,minus_ndwi,Ship,0,71
+48MXU,minus_ndwi,Clouds,627,5807
+48MXU,minus_ndwi,Marine Water,0,194
+48MXU,minus_ndwi,Sediment-Laden Water,0,0
+48MXU,minus_ndwi,Foam,0,0
+48MXU,minus_ndwi,Turbid Water,0,382
+48MXU,minus_ndwi,Shallow Water,0,45
+48MXU,minus_ndwi,Waves,0,0
+48MXU,minus_ndwi,Cloud Shadows,0,489
+48MXU,minus_ndwi,Wakes,0,15
+48MXU,minus_ndwi,Mixed Water,3,12
+48MXU,bands_only,Dense Sargassum,0,0
+48MXU,bands_only,Sparse Sargassum,0,0
+48MXU,bands_only,Natural Organic Material,0,0
+48MXU,bands_only,Ship,1,71
+48MXU,bands_only,Clouds,386,5807
+48MXU,bands_only,Marine Water,1,194
+48MXU,bands_only,Sediment-Laden Water,0,0
+48MXU,bands_only,Foam,0,0
+48MXU,bands_only,Turbid Water,0,382
+48MXU,bands_only,Shallow Water,0,45
+48MXU,bands_only,Waves,0,0
+48MXU,bands_only,Cloud Shadows,0,489
+48MXU,bands_only,Wakes,0,15
+48MXU,bands_only,Mixed Water,3,12
+48MYU,full_19,Dense Sargassum,0,0
+48MYU,full_19,Sparse Sargassum,0,0
+48MYU,full_19,Natural Organic Material,0,0
+48MYU,full_19,Ship,3,223
+48MYU,full_19,Clouds,0,0
+48MYU,full_19,Marine Water,0,291
+48MYU,full_19,Sediment-Laden Water,0,0
+48MYU,full_19,Foam,0,0
+48MYU,full_19,Turbid Water,0,10
+48MYU,full_19,Shallow Water,0,48
+48MYU,full_19,Waves,0,0
+48MYU,full_19,Cloud Shadows,0,0
+48MYU,full_19,Wakes,0,611
+48MYU,full_19,Mixed Water,0,0
+48MYU,minus_ndwi,Dense Sargassum,0,0
+48MYU,minus_ndwi,Sparse Sargassum,0,0
+48MYU,minus_ndwi,Natural Organic Material,0,0
+48MYU,minus_ndwi,Ship,2,223
+48MYU,minus_ndwi,Clouds,0,0
+48MYU,minus_ndwi,Marine Water,0,291
+48MYU,minus_ndwi,Sediment-Laden Water,0,0
+48MYU,minus_ndwi,Foam,0,0
+48MYU,minus_ndwi,Turbid Water,0,10
+48MYU,minus_ndwi,Shallow Water,0,48
+48MYU,minus_ndwi,Waves,0,0
+48MYU,minus_ndwi,Cloud Shadows,0,0
+48MYU,minus_ndwi,Wakes,0,611
+48MYU,minus_ndwi,Mixed Water,0,0
+48MYU,bands_only,Dense Sargassum,0,0
+48MYU,bands_only,Sparse Sargassum,0,0
+48MYU,bands_only,Natural Organic Material,0,0
+48MYU,bands_only,Ship,2,223
+48MYU,bands_only,Clouds,0,0
+48MYU,bands_only,Marine Water,0,291
+48MYU,bands_only,Sediment-Laden Water,0,0
+48MYU,bands_only,Foam,0,0
+48MYU,bands_only,Turbid Water,0,10
+48MYU,bands_only,Shallow Water,0,48
+48MYU,bands_only,Waves,0,0
+48MYU,bands_only,Cloud Shadows,0,0
+48MYU,bands_only,Wakes,0,611
+48MYU,bands_only,Mixed Water,0,0
+48PZC,full_19,Dense Sargassum,0,0
+48PZC,full_19,Sparse Sargassum,0,0
+48PZC,full_19,Natural Organic Material,0,0
+48PZC,full_19,Ship,0,0
+48PZC,full_19,Clouds,0,320
+48PZC,full_19,Marine Water,0,850
+48PZC,full_19,Sediment-Laden Water,0,0
+48PZC,full_19,Foam,0,0
+48PZC,full_19,Turbid Water,0,3218
+48PZC,full_19,Shallow Water,0,0
+48PZC,full_19,Waves,0,0
+48PZC,full_19,Cloud Shadows,0,68
+48PZC,full_19,Wakes,0,0
+48PZC,full_19,Mixed Water,0,0
+48PZC,minus_ndwi,Dense Sargassum,0,0
+48PZC,minus_ndwi,Sparse Sargassum,0,0
+48PZC,minus_ndwi,Natural Organic Material,0,0
+48PZC,minus_ndwi,Ship,0,0
+48PZC,minus_ndwi,Clouds,0,320
+48PZC,minus_ndwi,Marine Water,0,850
+48PZC,minus_ndwi,Sediment-Laden Water,0,0
+48PZC,minus_ndwi,Foam,0,0
+48PZC,minus_ndwi,Turbid Water,0,3218
+48PZC,minus_ndwi,Shallow Water,0,0
+48PZC,minus_ndwi,Waves,0,0
+48PZC,minus_ndwi,Cloud Shadows,0,68
+48PZC,minus_ndwi,Wakes,0,0
+48PZC,minus_ndwi,Mixed Water,0,0
+48PZC,bands_only,Dense Sargassum,0,0
+48PZC,bands_only,Sparse Sargassum,0,0
+48PZC,bands_only,Natural Organic Material,0,0
+48PZC,bands_only,Ship,0,0
+48PZC,bands_only,Clouds,0,320
+48PZC,bands_only,Marine Water,0,850
+48PZC,bands_only,Sediment-Laden Water,0,0
+48PZC,bands_only,Foam,0,0
+48PZC,bands_only,Turbid Water,0,3218
+48PZC,bands_only,Shallow Water,0,0
+48PZC,bands_only,Waves,0,0
+48PZC,bands_only,Cloud Shadows,0,68
+48PZC,bands_only,Wakes,0,0
+48PZC,bands_only,Mixed Water,0,0
+52SDD,full_19,Dense Sargassum,0,0
+52SDD,full_19,Sparse Sargassum,0,0
+52SDD,full_19,Natural Organic Material,16,328
+52SDD,full_19,Ship,3,94
+52SDD,full_19,Clouds,0,0
+52SDD,full_19,Marine Water,0,2416
+52SDD,full_19,Sediment-Laden Water,507,1591
+52SDD,full_19,Foam,0,4
+52SDD,full_19,Turbid Water,0,451
+52SDD,full_19,Shallow Water,0,0
+52SDD,full_19,Waves,0,0
+52SDD,full_19,Cloud Shadows,0,0
+52SDD,full_19,Wakes,1,37
+52SDD,full_19,Mixed Water,0,2
+52SDD,minus_ndwi,Dense Sargassum,0,0
+52SDD,minus_ndwi,Sparse Sargassum,0,0
+52SDD,minus_ndwi,Natural Organic Material,13,328
+52SDD,minus_ndwi,Ship,3,94
+52SDD,minus_ndwi,Clouds,0,0
+52SDD,minus_ndwi,Marine Water,0,2416
+52SDD,minus_ndwi,Sediment-Laden Water,526,1591
+52SDD,minus_ndwi,Foam,0,4
+52SDD,minus_ndwi,Turbid Water,0,451
+52SDD,minus_ndwi,Shallow Water,0,0
+52SDD,minus_ndwi,Waves,0,0
+52SDD,minus_ndwi,Cloud Shadows,0,0
+52SDD,minus_ndwi,Wakes,1,37
+52SDD,minus_ndwi,Mixed Water,0,2
+52SDD,bands_only,Dense Sargassum,0,0
+52SDD,bands_only,Sparse Sargassum,0,0
+52SDD,bands_only,Natural Organic Material,37,328
+52SDD,bands_only,Ship,1,94
+52SDD,bands_only,Clouds,0,0
+52SDD,bands_only,Marine Water,0,2416
+52SDD,bands_only,Sediment-Laden Water,790,1591
+52SDD,bands_only,Foam,0,4
+52SDD,bands_only,Turbid Water,0,451
+52SDD,bands_only,Shallow Water,0,0
+52SDD,bands_only,Waves,0,0
+52SDD,bands_only,Cloud Shadows,0,0
+52SDD,bands_only,Wakes,1,37
+52SDD,bands_only,Mixed Water,0,2

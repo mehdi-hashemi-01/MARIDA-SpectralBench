@@ -1,0 +1,5 @@
+experiment,best_epoch,best_val_f1,epochs_completed,train_seconds,checkpoint,test_evaluated,smoke_mode
+v04_replay,33,0.8286235186873291,35,910.71,C:\Users\Mehti\Documents\GitHub\MARIDA-SpectralBench\models\unet_v05\v04_replay_best.pt,False,False
+no_class_weights,22,0.8202643171806168,32,843.58,C:\Users\Mehti\Documents\GitHub\MARIDA-SpectralBench\models\unet_v05\no_class_weights_best.pt,False,False
+no_debris_oversampling,22,0.8224211022138483,32,16106.68,C:\Users\Mehti\Documents\GitHub\MARIDA-SpectralBench\models\unet_v05\no_debris_oversampling_best.pt,False,False
+extra_spectral_jitter,4,0.6461787302871007,14,379.02,C:\Users\Mehti\Documents\GitHub\MARIDA-SpectralBench\models\unet_v05\extra_spectral_jitter_best.pt,False,False
