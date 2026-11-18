@@ -1,0 +1,16 @@
+experiment,true_class,support,as_debris_fp,debris_as_this_fn
+lora_last2,Marine Debris,1075,0,0
+lora_last2,Dense Sargassum,1167,5,13
+lora_last2,Sparse Sargassum,385,23,24
+lora_last2,Natural Organic Material,92,52,45
+lora_last2,Ship,1340,45,31
+lora_last2,Clouds,19262,0,4
+lora_last2,Marine Water,18839,17,16
+lora_last2,Sediment-Laden Water,125565,18,0
+lora_last2,Foam,369,11,6
+lora_last2,Turbid Water,38566,13,1
+lora_last2,Shallow Water,1011,0,3
+lora_last2,Waves,987,67,0
+lora_last2,Cloud Shadows,2404,0,4
+lora_last2,Wakes,1946,1,2
+lora_last2,Mixed Water,94,37,2

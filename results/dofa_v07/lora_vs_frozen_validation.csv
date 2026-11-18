@@ -1,0 +1,6 @@
+model,debris_f1,source
+Source control spectral_only,0.9007992477668078,fresh v0.7 controlled
+DOFA pretrained + LoRA last2 + spectral skip (v0.7),0.8076923076923077,LoRA v0.7
+DOFA v0.6 (archived frozen + spectral skip),0.7813129279097866,historical separate run
+Source control combined,0.7496834107218235,fresh v0.7 controlled
+Source control dofa_only,0.6923076923076923,fresh v0.7 controlled

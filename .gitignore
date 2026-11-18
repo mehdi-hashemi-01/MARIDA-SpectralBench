@@ -41,6 +41,7 @@ pip-wheel-metadata/
 # ==================================================
 baseline/data/*
 !baseline/data/.gitkeep
+baseline/cache/*
 
 # Satellite imagery and geospatial data
 *.tif

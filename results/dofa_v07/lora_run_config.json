@@ -1,0 +1,31 @@
+{
+  "experiment": "DOFA pretrained frozen base + LoRA on last 2 attention blocks + spectral skip",
+  "test_accessed": false,
+  "checkpoint_sha256": "4720985e42b918ac0307009eb06121a3435d9bbce6fd95446f84824a538165b1",
+  "lora_blocks": 2,
+  "rank": 4,
+  "alpha": 8,
+  "trainable_encoder_params": 36864,
+  "trainable_encoder_names": [
+    "blocks.10.attn.qkv.a.weight",
+    "blocks.10.attn.qkv.b.weight",
+    "blocks.10.attn.proj.a.weight",
+    "blocks.10.attn.proj.b.weight",
+    "blocks.11.attn.qkv.a.weight",
+    "blocks.11.attn.qkv.b.weight",
+    "blocks.11.attn.proj.a.weight",
+    "blocks.11.attn.proj.b.weight"
+  ],
+  "epochs_max": 30,
+  "batch_size": 2,
+  "patience": 8,
+  "lr_head": 0.0003,
+  "lr_lora": 8e-05,
+  "seed": 42,
+  "train_patches": 694,
+  "validation_patches": 328,
+  "sampler": "debris-positive x3 with replacement",
+  "augmentation": "none, same as v0.6",
+  "loss": "class- and confidence-weighted sparse-label CE",
+  "caution": "LoRA training forwards through pretrained encoder every step, unlike frozen cache"
+}

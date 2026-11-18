@@ -1,0 +1,46 @@
+experiment,true_class,support,as_debris_fp,debris_as_this_fn
+combined,Marine Debris,1075,0,0
+combined,Dense Sargassum,1167,25,15
+combined,Sparse Sargassum,385,56,40
+combined,Natural Organic Material,92,48,78
+combined,Ship,1340,78,8
+combined,Clouds,19262,2,0
+combined,Marine Water,18839,25,19
+combined,Sediment-Laden Water,125565,0,0
+combined,Foam,369,19,0
+combined,Turbid Water,38566,19,3
+combined,Shallow Water,1011,0,0
+combined,Waves,987,98,0
+combined,Cloud Shadows,2404,0,0
+combined,Wakes,1946,2,0
+combined,Mixed Water,94,34,24
+dofa_only,Marine Debris,1075,0,0
+dofa_only,Dense Sargassum,1167,11,12
+dofa_only,Sparse Sargassum,385,60,62
+dofa_only,Natural Organic Material,92,40,44
+dofa_only,Ship,1340,77,14
+dofa_only,Clouds,19262,0,2
+dofa_only,Marine Water,18839,189,33
+dofa_only,Sediment-Laden Water,125565,0,0
+dofa_only,Foam,369,11,0
+dofa_only,Turbid Water,38566,77,8
+dofa_only,Shallow Water,1011,0,3
+dofa_only,Waves,987,0,3
+dofa_only,Cloud Shadows,2404,12,6
+dofa_only,Wakes,1946,10,22
+dofa_only,Mixed Water,94,70,2
+spectral_only,Marine Debris,1075,0,0
+spectral_only,Dense Sargassum,1167,0,0
+spectral_only,Sparse Sargassum,385,17,0
+spectral_only,Natural Organic Material,92,51,18
+spectral_only,Ship,1340,8,68
+spectral_only,Clouds,19262,0,0
+spectral_only,Marine Water,18839,1,16
+spectral_only,Sediment-Laden Water,125565,0,0
+spectral_only,Foam,369,5,0
+spectral_only,Turbid Water,38566,0,0
+spectral_only,Shallow Water,1011,0,0
+spectral_only,Waves,987,0,0
+spectral_only,Cloud Shadows,2404,0,3
+spectral_only,Wakes,1946,0,5
+spectral_only,Mixed Water,94,12,7

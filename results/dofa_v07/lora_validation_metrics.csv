@@ -1,0 +1,2 @@
+model,source,best_epoch,debris_f1,debris_precision,debris_recall,debris_iou,tp,fp,fn,evaluated_pixels,pretrained_sha256,test_evaluated,clouds_as_debris_fp,waves_as_debris_fp,sediment_as_debris_fp
+DOFA pretrained + LoRA last2 + spectral skip (v0.7),new v0.7 LoRA,10,0.8076923076923077,0.761747732893652,0.8595348837209302,0.6774193548387096,924,289,151,213102,4720985e42b918ac0307009eb06121a3435d9bbce6fd95446f84824a538165b1,False,0,67,18

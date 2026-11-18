@@ -1,0 +1,21 @@
+{
+  "purpose": "Isolate predictive contribution of DOFA frozen tokens vs spectral skip",
+  "modes": [
+    "combined",
+    "dofa_only",
+    "spectral_only"
+  ],
+  "seed": 42,
+  "epochs_max": 30,
+  "batch_size": 4,
+  "learning_rate": 0.0003,
+  "weight_decay": 0.0001,
+  "patience": 8,
+  "train_patches": 694,
+  "validation_patches": 328,
+  "pretrained_sha256": "4720985e42b918ac0307009eb06121a3435d9bbce6fd95446f84824a538165b1",
+  "loss": "class- and confidence-weighted masked CE",
+  "sampler": "replacement, debris-positive weight=3; same generator seed each arm",
+  "equal_head_parameter_count": true,
+  "test_accessed": false
+}
