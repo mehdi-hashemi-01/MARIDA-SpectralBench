@@ -5,7 +5,7 @@ validation strictly from remaining Train patches. Fit normalizers on the
 remaining inner-FIT patches. Epoch selection occurs on INNER VALIDATION ONLY.
 The unseen OUTER TILE is predicted ONCE with the selected checkpoint.
 
-13 folds x 3 models may be computationally expensive. The script
+PyCharm Run. 13 folds x 3 models may be computationally expensive. The script
 resumes completed fold/model outputs. Full run is required for pooled results.
 """
 from collections import defaultdict

@@ -61,23 +61,34 @@ These numbers must not be sorted into a common independent generalization leader
 
 ### 4.2 Five-seed spectral-only reproducibility
 
-**Status:** NOT YET COMPLETED
+**Status:** COMPLETED: repeated official-validation runs; not independent Test scores.
 
-**Not yet run.** Single-seed v0.7 Spectral Only validation F1 remains 0.9008.
+| Seeds | Mean validation debris F1 | Sample SD | Min F1 | Max F1 |
+|--:|--:|--:|--:|--:|
+| 5 | 0.8785 | 0.0151 | 0.8642 | 0.9008 |
 
 ### 4.3 Nested Tile-ID holdout generalization
 
-**Status:** NOT YET COMPLETED
+**Status:** COMPLETED: 13-fold pooled out-of-Tile results from official Train only.
 
-**Not yet run or incomplete.** Do not infer geographic generalization from official validation.
+| Model | Pooled F1 | Precision | Recall | TP | FP | FN | Tile-macro F1 (positive tiles) |
+|:--|--:|--:|--:|--:|--:|--:|--:|
+| spectral_only | 0.6089 | 0.5565 | 0.6722 | 1306 | 1041 | 637 | 0.5529 |
+| unet | 0.2716 | 0.1949 | 0.4478 | 870 | 3594 | 1073 | 0.2105 |
+| dofa_combined | 0.4232 | 0.2951 | 0.7478 | 1453 | 3470 | 490 | 0.4213 |
+
 
 **Interpretation rule:** A lower out-of-Tile F1 than the earlier official-validation score would indicate sensitivity to the group-change protocol, but cannot by itself be ascribed solely to geography because training populations and inner-fit sizes also differ.
 
 ### 4.4 Frozen DOFA: pretrained versus random
 
-**Status:** NOT YET COMPLETED
+**Status:** COMPLETED: matched paired decoder-seed experiment.
 
-**Not yet run.** The earlier v0.7 `dofa_only` score is not a matched random-initialization comparison.
+| Frozen DOFA initialization | Mean validation F1 |
+|:--|--:|
+| Official pretrained | 0.6555 |
+| Randomly initialized | 0.0973 |
+| Pretrained minus random, paired mean | 0.5582 |
 
 **Interpretation rule:** A paired advantage for pretrained tokens under the fixed-encoder setting supports representation usefulness *for this protocol*; it does not imply that DOFA outperforms the spectral decoder, fully fine-tuned variants, or unfamiliar locations.
 

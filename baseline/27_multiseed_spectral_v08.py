@@ -1,6 +1,6 @@
 """v0.8A - 5-seed repeat of the v0.7 Spectral-Only decoder on official TRAIN/VAL.
 
-Every seed retrains the
+PyCharm: open this file and Run. TEST is never read. Every seed retrains the
 model and picks its own checkpoint by official validation F1 (not a test score).
 """
 from pathlib import Path

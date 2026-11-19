@@ -1,0 +1,21 @@
+{
+  "number_of_pairs": 3,
+  "pretrained_mean_f1": 0.6554863306135355,
+  "random_mean_f1": 0.09725864335598237,
+  "paired_delta_mean": 0.5582276872575531,
+  "paired_delta_sample_sd": 0.029789722390457584,
+  "decoder_seed_pairs": [
+    42,
+    7,
+    21
+  ],
+  "random_encoder_seed": 20261119,
+  "random_encoder_init_sha256": "1255b8cfda921928586f48b67aeb0f5ea5a8706394c672420b0143e05d8418ad",
+  "real_pretrained_sha256": "4720985e42b918ac0307009eb06121a3435d9bbce6fd95446f84824a538165b1",
+  "same_head_architecture": true,
+  "same_head_seeds": true,
+  "raw_skip_zeroed": true,
+  "encoders_frozen": true,
+  "test_accessed": false,
+  "caution": "Comparison is conditional on this preprocessing, model architecture and official validation."
+}
