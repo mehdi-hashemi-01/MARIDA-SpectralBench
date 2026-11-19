@@ -1,0 +1,6 @@
+patch,tile,acquisition,labeled_pixels,debris_support,tp,fp,fn,debris_f1
+S2_11-1-19_19QDA_0.tif,19QDA,11-1-19/19QDA,20,0,0,0,0,
+S2_11-1-19_19QDA_1.tif,19QDA,11-1-19/19QDA,48,0,0,0,0,
+S2_11-1-19_19QDA_2.tif,19QDA,11-1-19/19QDA,30,0,0,5,0,0.0
+S2_11-1-19_19QDA_3.tif,19QDA,11-1-19/19QDA,5,0,0,0,0,
+S2_11-1-19_19QDA_4.tif,19QDA,11-1-19/19QDA,87,0,0,1,0,0.0

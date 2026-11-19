@@ -1,0 +1,4 @@
+model,fold_count,scope,outer_selection_free,test_accessed,tp,fp,fn,debris_f1,debris_iou,debris_precision,debris_recall,macro_f1_present,evaluated_pixels,debris_support,macro_tile_f1_positive_tiles,positive_support_tile_count,debris_absent_tile_count
+spectral_only,13,only official Train; leave-one-Tile-ID-out,True,False,1306,1041,637,0.6088578088578088,0.43766756032171583,0.5564550489987218,0.6721564590838909,0.5336690485823158,429412,1943,0.5529278665694176,10,3
+unet,13,only official Train; leave-one-Tile-ID-out,True,False,870,3594,1073,0.2715779616044951,0.15712479682138342,0.19489247311827956,0.44776119402985076,0.12217129240156906,429412,1943,0.21048656133912166,10,3
+dofa_combined,13,only official Train; leave-one-Tile-ID-out,True,False,1453,3470,490,0.42324497524031457,0.26842785885830406,0.2951452366443226,0.7478126608337622,0.4829537034959065,429412,1943,0.4212971226254161,10,3

@@ -1,0 +1,23 @@
+{
+  "model": "dofa_combined",
+  "seed": 42,
+  "selection_protocol": "inner_train_only",
+  "best_epoch": 13,
+  "best_inner_f1": 0.24536628420123566,
+  "outer_evaluated_once": true,
+  "fit_patches": 478,
+  "inner_validation_patches": 210,
+  "final_evaluation_patches": 6,
+  "test_accessed": false,
+  "run_signature": "9d0c0e194db362aa919476f2e353be438be443f12f19879fea8412a3265608e9",
+  "tp": 0,
+  "fp": 48,
+  "fn": 0,
+  "debris_f1": 0.0,
+  "debris_iou": 0.0,
+  "debris_precision": 0.0,
+  "debris_recall": 0.0,
+  "macro_f1_present": 0.194725257398888,
+  "evaluated_pixels": 1785,
+  "debris_support": 0
+}

@@ -1,0 +1,23 @@
+{
+  "model": "spectral_only",
+  "seed": 21,
+  "selection_protocol": "official_validation",
+  "best_epoch": 23,
+  "best_inner_f1": 0.8808337109198007,
+  "outer_evaluated_once": false,
+  "fit_patches": 694,
+  "inner_validation_patches": 328,
+  "final_evaluation_patches": 328,
+  "test_accessed": false,
+  "run_signature": "03d0110eb8293b70456a3a8e0fd0f695ef9170bfae5aa4691ac6950e4900592d",
+  "tp": 972,
+  "fp": 160,
+  "fn": 103,
+  "debris_f1": 0.8808337109198007,
+  "debris_iou": 0.7870445344129555,
+  "debris_precision": 0.8586572438162544,
+  "debris_recall": 0.9041860465116279,
+  "macro_f1_present": 0.7333019700231065,
+  "evaluated_pixels": 213102,
+  "debris_support": 1075
+}

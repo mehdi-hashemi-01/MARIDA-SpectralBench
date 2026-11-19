@@ -1,0 +1,23 @@
+{
+  "model": "unet",
+  "seed": 42,
+  "selection_protocol": "inner_train_only",
+  "best_epoch": 1,
+  "best_inner_f1": 0.41818181818181815,
+  "outer_evaluated_once": true,
+  "fit_patches": 524,
+  "inner_validation_patches": 131,
+  "final_evaluation_patches": 39,
+  "test_accessed": false,
+  "run_signature": "02b8ba1d91681c827ffd4ed9d3b0c7a6635ca5c17b0703d4a21a5c295048a72f",
+  "tp": 20,
+  "fp": 4,
+  "fn": 188,
+  "debris_f1": 0.1724137931034483,
+  "debris_iou": 0.09433962264150944,
+  "debris_precision": 0.8333333333333334,
+  "debris_recall": 0.09615384615384616,
+  "macro_f1_present": 0.042963442776432735,
+  "evaluated_pixels": 7223,
+  "debris_support": 208
+}

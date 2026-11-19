@@ -1,0 +1,10 @@
+{
+  "model": "spectral_only",
+  "number_of_seeds": 5,
+  "mean_validation_f1": 0.8785167546874506,
+  "sample_sd_validation_f1": 0.015134337801675843,
+  "min_validation_f1": 0.8642309427153811,
+  "max_validation_f1": 0.9007992477668078,
+  "total_test_accesses": 0,
+  "caution": "SD across seeds is not a geographic confidence interval; best checkpoints are validation-selected."
+}

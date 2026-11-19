@@ -1,0 +1,24 @@
+{
+  "stage": "v0.8 multi-seed spectral-only",
+  "seeds": [
+    42,
+    7,
+    21,
+    123,
+    2026
+  ],
+  "train_patches": 694,
+  "validation_patches": 328,
+  "checkpoint_selection": "official validation F1 per seed; selection-set metric only",
+  "model": "DofaDenseHead with zero DOFA tokens; raw spectral skip only",
+  "epochs_max": 30,
+  "batch_size": 4,
+  "patience": 8,
+  "lr": 0.0003,
+  "augment": false,
+  "sampler": "debris patches x3, with replacement",
+  "train_only_normalization": true,
+  "test_accessed": false,
+  "historical_seed42_v07_f1": 0.9008,
+  "warning": "The historical v0.7 score is a comparison target, not a lock-step reproduction guarantee."
+}

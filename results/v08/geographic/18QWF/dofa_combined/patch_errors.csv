@@ -1,0 +1,7 @@
+patch,tile,acquisition,labeled_pixels,debris_support,tp,fp,fn,debris_f1
+S2_22-3-20_18QWF_0.tif,18QWF,22-3-20/18QWF,126,0,0,1,0,0.0
+S2_22-3-20_18QWF_1.tif,18QWF,22-3-20/18QWF,325,0,0,0,0,
+S2_22-3-20_18QWF_2.tif,18QWF,22-3-20/18QWF,74,0,0,0,0,
+S2_22-3-20_18QWF_3.tif,18QWF,22-3-20/18QWF,558,0,0,7,0,0.0
+S2_22-3-20_18QWF_4.tif,18QWF,22-3-20/18QWF,3,0,0,0,0,
+S2_22-3-20_18QWF_5.tif,18QWF,22-3-20/18QWF,699,0,0,40,0,0.0

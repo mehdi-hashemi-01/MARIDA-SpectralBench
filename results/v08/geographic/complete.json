@@ -1,0 +1,21 @@
+{
+  "all_folds_finished": true,
+  "folds": [
+    "16PCC",
+    "16PDC",
+    "16PEC",
+    "16QED",
+    "18QWF",
+    "18QYF",
+    "19QDA",
+    "30VWH",
+    "36JUN",
+    "48MXU",
+    "48MYU",
+    "48PZC",
+    "52SDD"
+  ],
+  "each_patch_scored_exactly_once_per_model": true,
+  "outer_tile_not_used_for_checkpoint_selection": true,
+  "warning": "Tile IDs used as geographic proxy, footprints not externally audited."
+}
